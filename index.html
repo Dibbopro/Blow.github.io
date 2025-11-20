@@ -372,6 +372,12 @@
             color: #CCCCCC;
         }
         
+        .inr-price {
+            font-size: 18px;
+            color: var(--light-yellow);
+            margin-bottom: 10px;
+        }
+        
         .pricing-features {
             list-style: none;
             margin: 25px 0;
@@ -395,6 +401,108 @@
         }
         
         .btn-pricing {
+            width: 100%;
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+            margin-top: 20px;
+        }
+        
+        /* VPS Section */
+        .vps-section {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+            position: relative;
+        }
+        
+        .vps-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-yellow), var(--accent-yellow), var(--primary-yellow));
+        }
+        
+        .vps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .vps-card {
+            background-color: var(--dark-bg);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        
+        .vps-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary-yellow);
+        }
+        
+        .vps-card.popular {
+            border-color: var(--primary-yellow);
+            transform: scale(1.05);
+        }
+        
+        .vps-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .vps-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-yellow);
+        }
+        
+        .vps-price {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--text-light);
+        }
+        
+        .vps-price span {
+            font-size: 16px;
+            color: #CCCCCC;
+        }
+        
+        .vps-inr-price {
+            font-size: 18px;
+            color: var(--light-yellow);
+            margin-bottom: 10px;
+        }
+        
+        .vps-features {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .vps-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .vps-features li i {
+            color: var(--minecraft-green);
+            margin-right: 10px;
+        }
+        
+        .vps-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .btn-vps {
             width: 100%;
             background-color: var(--primary-yellow);
             color: var(--text-dark);
@@ -564,6 +672,34 @@
             box-shadow: 4px 4px 0 var(--dark-yellow);
         }
         
+        /* Page Navigation */
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 10px;
+        }
+        
+        .page-nav-btn {
+            padding: 10px 20px;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            border: 1px solid var(--primary-yellow);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .page-nav-btn.active {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+        }
+        
+        .page-nav-btn:hover {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-container {
@@ -594,11 +730,11 @@
                 font-size: 18px;
             }
             
-            .pricing-card.popular {
+            .pricing-card.popular, .vps-card.popular {
                 transform: scale(1);
             }
             
-            .pricing-card.popular:hover {
+            .pricing-card.popular:hover, .vps-card.popular:hover {
                 transform: translateY(-10px);
             }
         }
@@ -624,6 +760,15 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* Page Sections */
+        .page-section {
+            display: none;
+        }
+        
+        .page-section.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -636,232 +781,471 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#support">Support</a></li>
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li><a href="#" data-page="minecraft">Minecraft</a></li>
+                    <li><a href="#" data-page="vps">VPS</a></li>
+                    <li><a href="#" data-page="testimonials">Testimonials</a></li>
+                    <li><a href="#" data-page="support">Support</a></li>
                 </ul>
             </nav>
             <div class="auth-buttons">
                 <a href="#" class="btn btn-login">Client Area</a>
-                <a href="#pricing" class="btn btn-register">Get Started</a>
+                <a href="#" class="btn btn-register" data-page="minecraft">Get Started</a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h2>Premium Minecraft Server Hosting</h2>
-            <p>Experience lightning-fast performance with our optimized Minecraft hosting solutions. Get started in minutes with our easy-to-use control panel.</p>
-            <p class="minecraft-text">No lag • Instant setup • 99.9% Uptime</p>
-            <div style="margin-top: 30px;">
-                <a href="#pricing" class="btn btn-hero">View Plans</a>
-                <a href="#" class="btn btn-hero" style="background: transparent; color: var(--primary-yellow); border: 2px solid var(--primary-yellow);">Live Demo</a>
+    <!-- Home Page -->
+    <section id="home" class="page-section active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h2>Premium Minecraft & VPS Hosting</h2>
+                <p>Experience lightning-fast performance with our optimized hosting solutions. Get started in minutes with our easy-to-use control panel.</p>
+                <p class="minecraft-text">No lag • Instant setup • 99.9% Uptime</p>
+                <div style="margin-top: 30px;">
+                    <a href="#" class="btn btn-hero" data-page="minecraft">Minecraft Plans</a>
+                    <a href="#" class="btn btn-hero" data-page="vps">VPS Plans</a>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Why Choose BlowNodes?</h2>
+                    <p>We provide the best hosting experience with cutting-edge technology and exceptional support.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card fade-in">
+                        <i class="fas fa-bolt feature-icon"></i>
+                        <h3>Lightning Fast</h3>
+                        <p>Our servers are optimized for maximum performance with NVMe storage and low latency networks.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <h3>DDoS Protection</h3>
+                        <p>Advanced DDoS protection keeps your server safe from attacks and ensures maximum uptime.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <i class="fas fa-sliders-h feature-icon"></i>
+                        <h3>Easy Control Panel</h3>
+                        <p>Our custom control panel makes server management simple, even for beginners.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <i class="fas fa-headset feature-icon"></i>
+                        <h3>24/7 Support</h3>
+                        <p>Our expert support team is available around the clock to help with any issues.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <i class="fas fa-cloud-upload-alt feature-icon"></i>
+                        <h3>Automatic Backups</h3>
+                        <p>Regular automatic backups ensure your data is always safe and recoverable.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <i class="fas fa-globe feature-icon"></i>
+                        <h3>Global Locations</h3>
+                        <p>Choose from multiple server locations worldwide for the best connection.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Choose BlowNodes?</h2>
-                <p>We provide the best Minecraft hosting experience with cutting-edge technology and exceptional support.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <i class="fas fa-bolt feature-icon"></i>
-                    <h3>Lightning Fast</h3>
-                    <p>Our servers are optimized for maximum performance with SSD storage and low latency networks.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <i class="fas fa-shield-alt feature-icon"></i>
-                    <h3>DDoS Protection</h3>
-                    <p>Advanced DDoS protection keeps your server safe from attacks and ensures maximum uptime.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <i class="fas fa-sliders-h feature-icon"></i>
-                    <h3>Easy Control Panel</h3>
-                    <p>Our custom control panel makes server management simple, even for beginners.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <i class="fas fa-headset feature-icon"></i>
-                    <h3>24/7 Support</h3>
-                    <p>Our expert support team is available around the clock to help with any issues.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <i class="fas fa-cloud-upload-alt feature-icon"></i>
-                    <h3>Automatic Backups</h3>
-                    <p>Regular automatic backups ensure your data is always safe and recoverable.</p>
-                </div>
-                <div class="feature-card fade-in">
-                    <i class="fas fa-globe feature-icon"></i>
-                    <h3>Global Locations</h3>
-                    <p>Choose from multiple server locations worldwide for the best connection.</p>
-                </div>
-            </div>
+    <!-- Minecraft Plans Page -->
+    <section id="minecraft" class="page-section">
+        <div class="page-nav">
+            <button class="page-nav-btn active" data-page="minecraft">Minecraft Plans</button>
+            <button class="page-nav-btn" data-page="vps">VPS Plans</button>
         </div>
+        
+        <section class="pricing">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Minecraft Hosting Plans</h2>
+                    <p>Choose the perfect plan for your Minecraft server. All plans include our premium features.</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card fade-in">
+                        <h3>Dirt</h3>
+                        <div class="price">$2.50<span>/month</span></div>
+                        <div class="inr-price">₹210/month</div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 1GB RAM</li>
+                            <li><i class="fas fa-check"></i> 1 vCPU Core</li>
+                            <li><i class="fas fa-check"></i> 10GB SSD Storage</li>
+                            <li><i class="fas fa-check"></i> Unlimited Slots</li>
+                            <li><i class="fas fa-check"></i> Basic Support</li>
+                        </ul>
+                        <a href="#" class="btn btn-pricing">Get Started</a>
+                    </div>
+                    <div class="pricing-card popular fade-in">
+                        <div class="popular-badge">MOST POPULAR</div>
+                        <h3>Stone</h3>
+                        <div class="price">$5<span>/month</span></div>
+                        <div class="inr-price">₹420/month</div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 2GB RAM</li>
+                            <li><i class="fas fa-check"></i> 2 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 20GB SSD Storage</li>
+                            <li><i class="fas fa-check"></i> Unlimited Slots</li>
+                            <li><i class="fas fa-check"></i> Priority Support</li>
+                            <li><i class="fas fa-check"></i> Free Subdomain</li>
+                        </ul>
+                        <a href="#" class="btn btn-pricing pulse">Get Started</a>
+                    </div>
+                    <div class="pricing-card fade-in">
+                        <h3>Iron</h3>
+                        <div class="price">$8<span>/month</span></div>
+                        <div class="inr-price">₹670/month</div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 4GB RAM</li>
+                            <li><i class="fas fa-check"></i> 3 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 40GB SSD Storage</li>
+                            <li><i class="fas fa-check"></i> Unlimited Slots</li>
+                            <li><i class="fas fa-check"></i> 24/7 Premium Support</li>
+                            <li><i class="fas fa-check"></i> Free Domain</li>
+                        </ul>
+                        <a href="#" class="btn btn-pricing">Get Started</a>
+                    </div>
+                    <div class="pricing-card fade-in">
+                        <h3>Diamond</h3>
+                        <div class="price">$12<span>/month</span></div>
+                        <div class="inr-price">₹1000/month</div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 8GB RAM</li>
+                            <li><i class="fas fa-check"></i> 4 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 80GB SSD Storage</li>
+                            <li><i class="fas fa-check"></i> Unlimited Slots</li>
+                            <li><i class="fas fa-check"></i> 24/7 Premium Support</li>
+                            <li><i class="fas fa-check"></i> Free Domain + SSL</li>
+                        </ul>
+                        <a href="#" class="btn btn-pricing">Get Started</a>
+                    </div>
+                </div>
+                
+                <!-- High Performance Plans -->
+                <div class="section-title" style="margin-top: 80px;">
+                    <h2>High Performance Plans</h2>
+                    <p>For large communities and modpacks that require more resources.</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card fade-in">
+                        <h3>Netherite</h3>
+                        <div class="price">$18<span>/month</span></div>
+                        <div class="inr-price">₹1500/month</div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 16GB RAM</li>
+                            <li><i class="fas fa-check"></i> 6 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 160GB NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> Unlimited Slots</li>
+                            <li><i class="fas fa-check"></i> Priority Support</li>
+                            <li><i class="fas fa-check"></i> Free Domain + SSL</li>
+                        </ul>
+                        <a href="#" class="btn btn-pricing">Get Started</a>
+                    </div>
+                    <div class="pricing-card fade-in">
+                        <h3>Beacon</h3>
+                        <div class="price">$25<span>/month</span></div>
+                        <div class="inr-price">₹2100/month</div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 24GB RAM</li>
+                            <li><i class="fas fa-check"></i> 8 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 240GB NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> Unlimited Slots</li>
+                            <li><i class="fas fa-check"></i> Priority Support</li>
+                            <li><i class="fas fa-check"></i> Free Domain + SSL</li>
+                        </ul>
+                        <a href="#" class="btn btn-pricing">Get Started</a>
+                    </div>
+                    <div class="pricing-card fade-in">
+                        <h3>Ender</h3>
+                        <div class="price">$32<span>/month</span></div>
+                        <div class="inr-price">₹2700/month</div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 32GB RAM</li>
+                            <li><i class="fas fa-check"></i> 10 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 320GB NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> Unlimited Slots</li>
+                            <li><i class="fas fa-check"></i> Priority Support</li>
+                            <li><i class="fas fa-check"></i> Free Domain + SSL</li>
+                        </ul>
+                        <a href="#" class="btn btn-pricing">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <div class="section-title">
-                <h2>Affordable Pricing Plans</h2>
-                <p>Choose the perfect plan for your needs. All plans include our premium features.</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card fade-in">
-                    <h3>Dirt</h3>
-                    <div class="price">$2.50<span>/month</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 1GB RAM</li>
-                        <li><i class="fas fa-check"></i> 1 vCPU Core</li>
-                        <li><i class="fas fa-check"></i> 10GB SSD Storage</li>
-                        <li><i class="fas fa-check"></i> Unlimited Slots</li>
-                        <li><i class="fas fa-check"></i> Basic Support</li>
-                    </ul>
-                    <a href="#" class="btn btn-pricing">Get Started</a>
-                </div>
-                <div class="pricing-card popular fade-in">
-                    <div class="popular-badge">MOST POPULAR</div>
-                    <h3>Stone</h3>
-                    <div class="price">$5<span>/month</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 2GB RAM</li>
-                        <li><i class="fas fa-check"></i> 2 vCPU Cores</li>
-                        <li><i class="fas fa-check"></i> 20GB SSD Storage</li>
-                        <li><i class="fas fa-check"></i> Unlimited Slots</li>
-                        <li><i class="fas fa-check"></i> Priority Support</li>
-                        <li><i class="fas fa-check"></i> Free Subdomain</li>
-                    </ul>
-                    <a href="#" class="btn btn-pricing pulse">Get Started</a>
-                </div>
-                <div class="pricing-card fade-in">
-                    <h3>Iron</h3>
-                    <div class="price">$8<span>/month</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 4GB RAM</li>
-                        <li><i class="fas fa-check"></i> 3 vCPU Cores</li>
-                        <li><i class="fas fa-check"></i> 40GB SSD Storage</li>
-                        <li><i class="fas fa-check"></i> Unlimited Slots</li>
-                        <li><i class="fas fa-check"></i> 24/7 Premium Support</li>
-                        <li><i class="fas fa-check"></i> Free Domain</li>
-                    </ul>
-                    <a href="#" class="btn btn-pricing">Get Started</a>
-                </div>
-                <div class="pricing-card fade-in">
-                    <h3>Diamond</h3>
-                    <div class="price">$12<span>/month</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 8GB RAM</li>
-                        <li><i class="fas fa-check"></i> 4 vCPU Cores</li>
-                        <li><i class="fas fa-check"></i> 80GB SSD Storage</li>
-                        <li><i class="fas fa-check"></i> Unlimited Slots</li>
-                        <li><i class="fas fa-check"></i> 24/7 Premium Support</li>
-                        <li><i class="fas fa-check"></i> Free Domain + SSL</li>
-                    </ul>
-                    <a href="#" class="btn btn-pricing">Get Started</a>
-                </div>
-            </div>
+    <!-- VPS Plans Page -->
+    <section id="vps" class="page-section">
+        <div class="page-nav">
+            <button class="page-nav-btn" data-page="minecraft">Minecraft Plans</button>
+            <button class="page-nav-btn active" data-page="vps">VPS Plans</button>
         </div>
+        
+        <section class="vps-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Virtual Private Server Plans</h2>
+                    <p>Full root access, dedicated resources, and complete control over your virtual server.</p>
+                </div>
+                <div class="vps-grid">
+                    <div class="vps-card fade-in">
+                        <h3>VPS Starter</h3>
+                        <div class="vps-price">$6<span>/month</span></div>
+                        <div class="vps-inr-price">₹500/month</div>
+                        <ul class="vps-features">
+                            <li><i class="fas fa-check"></i> 1 vCPU Core</li>
+                            <li><i class="fas fa-check"></i> 2GB RAM</li>
+                            <li><i class="fas fa-check"></i> 25GB NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> 1TB Bandwidth</li>
+                            <li><i class="fas fa-check"></i> 1 IPv4 Address</li>
+                            <li><i class="fas fa-check"></i> Full Root Access</li>
+                        </ul>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps">Order Now</a>
+                    </div>
+                    <div class="vps-card popular fade-in">
+                        <div class="popular-badge">BEST VALUE</div>
+                        <h3>VPS Advanced</h3>
+                        <div class="vps-price">$12<span>/month</span></div>
+                        <div class="vps-inr-price">₹1000/month</div>
+                        <ul class="vps-features">
+                            <li><i class="fas fa-check"></i> 2 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 4GB RAM</li>
+                            <li><i class="fas fa-check"></i> 50GB NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> 2TB Bandwidth</li>
+                            <li><i class="fas fa-check"></i> 1 IPv4 Address</li>
+                            <li><i class="fas fa-check"></i> Full Root Access</li>
+                        </ul>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps pulse">Order Now</a>
+                    </div>
+                    <div class="vps-card fade-in">
+                        <h3>VPS Professional</h3>
+                        <div class="vps-price">$20<span>/month</span></div>
+                        <div class="vps-inr-price">₹1670/month</div>
+                        <ul class="vps-features">
+                            <li><i class="fas fa-check"></i> 4 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 8GB RAM</li>
+                            <li><i class="fas fa-check"></i> 100GB NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> 4TB Bandwidth</li>
+                            <li><i class="fas fa-check"></i> 2 IPv4 Addresses</li>
+                            <li><i class="fas fa-check"></i> Full Root Access</li>
+                        </ul>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps">Order Now</a>
+                    </div>
+                    <div class="vps-card fade-in">
+                        <h3>VPS Enterprise</h3>
+                        <div class="vps-price">$35<span>/month</span></div>
+                        <div class="vps-inr-price">₹2920/month</div>
+                        <ul class="vps-features">
+                            <li><i class="fas fa-check"></i> 6 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 16GB RAM</li>
+                            <li><i class="fas fa-check"></i> 200GB NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> 6TB Bandwidth</li>
+                            <li><i class="fas fa-check"></i> 2 IPv4 Addresses</li>
+                            <li><i class="fas fa-check"></i> Full Root Access</li>
+                        </ul>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps">Order Now</a>
+                    </div>
+                </div>
+                
+                <!-- High Performance VPS Plans -->
+                <div class="section-title" style="margin-top: 80px;">
+                    <h2>High Performance VPS</h2>
+                    <p>For demanding applications and high-traffic websites.</p>
+                </div>
+                <div class="vps-grid">
+                    <div class="vps-card fade-in">
+                        <h3>VPS Power</h3>
+                        <div class="vps-price">$50<span>/month</span></div>
+                        <div class="vps-inr-price">₹4170/month</div>
+                        <ul class="vps-features">
+                            <li><i class="fas fa-check"></i> 8 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 32GB RAM</li>
+                            <li><i class="fas fa-check"></i> 300GB NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> 8TB Bandwidth</li>
+                            <li><i class="fas fa-check"></i> 3 IPv4 Addresses</li>
+                            <li><i class="fas fa-check"></i> Full Root Access</li>
+                        </ul>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps">Order Now</a>
+                    </div>
+                    <div class="vps-card fade-in">
+                        <h3>VPS Ultimate</h3>
+                        <div class="vps-price">$75<span>/month</span></div>
+                        <div class="vps-inr-price">₹6250/month</div>
+                        <ul class="vps-features">
+                            <li><i class="fas fa-check"></i> 12 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 48GB RAM</li>
+                            <li><i class="fas fa-check"></i> 500GB NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> 10TB Bandwidth</li>
+                            <li><i class="fas fa-check"></i> 4 IPv4 Addresses</li>
+                            <li><i class="fas fa-check"></i> Full Root Access</li>
+                        </ul>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps">Order Now</a>
+                    </div>
+                    <div class="vps-card fade-in">
+                        <h3>VPS Extreme</h3>
+                        <div class="vps-price">$100<span>/month</span></div>
+                        <div class="vps-inr-price">₹8350/month</div>
+                        <ul class="vps-features">
+                            <li><i class="fas fa-check"></i> 16 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 64GB RAM</li>
+                            <li><i class="fas fa-check"></i> 750GB NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> 15TB Bandwidth</li>
+                            <li><i class="fas fa-check"></i> 5 IPv4 Addresses</li>
+                            <li><i class="fas fa-check"></i> Full Root Access</li>
+                        </ul>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>What Our Players Say</h2>
-                <p>Don't just take our word for it. Here's what our community has to say about BlowNodes.</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"I've tried several Minecraft hosting providers, but BlowNodes is by far the best. The performance is incredible and their support team is always helpful."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">MJ</div>
-                        <div class="author-info">
-                            <h4>NotchFan42</h4>
-                            <p>Server Owner</p>
+    <!-- Testimonials Page -->
+    <section id="testimonials" class="page-section">
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-title">
+                    <h2>What Our Players Say</h2>
+                    <p>Don't just take our word for it. Here's what our community has to say about BlowNodes.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card fade-in">
+                        <p class="testimonial-text">"I've tried several Minecraft hosting providers, but BlowNodes is by far the best. The performance is incredible and their support team is always helpful."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">MJ</div>
+                            <div class="author-info">
+                                <h4>NotchFan42</h4>
+                                <p>Server Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card fade-in">
+                        <p class="testimonial-text">"Setting up my server was so easy with BlowNodes. The control panel is intuitive, and my server has been running smoothly for months without any issues."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">SL</div>
+                            <div class="author-info">
+                                <h4>CreeperHunter</h4>
+                                <p>Content Creator</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card fade-in">
+                        <p class="testimonial-text">"The value for money is exceptional. I get premium features at an affordable price. My players love the low latency and stable connection."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">DR</div>
+                            <div class="author-info">
+                                <h4>RedstoneMaster</h4>
+                                <p>Community Manager</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"Setting up my server was so easy with BlowNodes. The control panel is intuitive, and my server has been running smoothly for months without any issues."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">SL</div>
-                        <div class="author-info">
-                            <h4>CreeperHunter</h4>
-                            <p>Content Creator</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"The value for money is exceptional. I get premium features at an affordable price. My players love the low latency and stable connection."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">DR</div>
-                        <div class="author-info">
-                            <h4>RedstoneMaster</h4>
-                            <p>Community Manager</p>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
+        </section>
     </section>
 
-    <!-- Footer -->
-    <footer id="support">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h3>BlowNodes</h3>
-                    <p>Premium Minecraft server hosting with unmatched performance and support.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-discord"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
+    <!-- Support Page -->
+    <section id="support" class="page-section">
+        <footer>
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>BlowNodes</h3>
+                        <p>Premium Minecraft server hosting with unmatched performance and support.</p>
+                        <div class="social-links">
+                            <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank"><i class="fab fa-discord"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Services</h3>
+                        <ul class="footer-links">
+                            <li><a href="#" data-page="minecraft">Minecraft Hosting</a></li>
+                            <li><a href="#" data-page="vps">VPS Hosting</a></li>
+                            <li><a href="#">Discord Bot Hosting</a></li>
+                            <li><a href="#">Web Hosting</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Support</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Knowledge Base</a></li>
+                            <li><a href="#">Support Tickets</a></li>
+                            <li><a href="#">Server Status</a></li>
+                            <li><a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank">Discord Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Affiliate Program</a></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Minecraft Hosting</a></li>
-                        <li><a href="#">VPS Hosting</a></li>
-                        <li><a href="#">Discord Bot Hosting</a></li>
-                        <li><a href="#">Web Hosting</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Support</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Knowledge Base</a></li>
-                        <li><a href="#">Support Tickets</a></li>
-                        <li><a href="#">Server Status</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Company</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Affiliate Program</a></li>
-                    </ul>
+                <div class="copyright">
+                    <p>&copy; 2023 BlowNodes. All rights reserved. Minecraft is a trademark of Mojang AB. Not affiliated with Mojang.</p>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 BlowNodes. All rights reserved. Minecraft is a trademark of Mojang AB. Not affiliated with Mojang.</p>
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </section>
 
     <script>
-        // Simple JavaScript for interactive elements
+        // Page Navigation
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize page navigation
+            const pageLinks = document.querySelectorAll('[data-page]');
+            const pageSections = document.querySelectorAll('.page-section');
+            const navButtons = document.querySelectorAll('.page-nav-btn');
+            
+            // Function to show a specific page
+            function showPage(pageId) {
+                // Hide all pages
+                pageSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show the selected page
+                document.getElementById(pageId).classList.add('active');
+                
+                // Update navigation buttons
+                navButtons.forEach(btn => {
+                    if (btn.getAttribute('data-page') === pageId) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Add click event to all page links
+            pageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                });
+            });
+            
+            // Add click event to navigation buttons
+            navButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                });
+            });
+            
             // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -911,7 +1295,7 @@
             window.addEventListener('scroll', fadeInOnScroll);
             
             // Add click event to pricing cards
-            const pricingCards = document.querySelectorAll('.pricing-card');
+            const pricingCards = document.querySelectorAll('.pricing-card, .vps-card');
             pricingCards.forEach(card => {
                 card.addEventListener('click', function() {
                     // Remove active class from all cards
@@ -921,13 +1305,25 @@
                 });
             });
             
-            // Simple form submission simulation
-            const pricingButtons = document.querySelectorAll('.btn-pricing');
-            pricingButtons.forEach(button => {
+            // Simple form submission simulation for Minecraft plans
+            const minecraftButtons = document.querySelectorAll('.btn-pricing');
+            minecraftButtons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
                     const planName = this.closest('.pricing-card').querySelector('h3').textContent;
                     alert(`Thank you for your interest in the ${planName} plan! You would now be redirected to our order page.`);
+                });
+            });
+            
+            // Discord redirect for VPS plans
+            const vpsButtons = document.querySelectorAll('.btn-vps');
+            vpsButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Let the link work normally (opens Discord)
+                    // We don't prevent default here
+                    const planName = this.closest('.vps-card').querySelector('h3').textContent;
+                    // Optional: You could add analytics tracking here
+                    console.log(`User clicked on ${planName} VPS plan`);
                 });
             });
             
@@ -937,13 +1333,9 @@
                 alert('Redirecting to client area login...');
             });
             
-            document.querySelector('.btn-register').addEventListener('click', function(e) {
-                e.preventDefault();
-                // Smooth scroll to pricing section
-                document.querySelector('#pricing').scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+            // Set initial page based on URL hash
+            const initialPage = window.location.hash.substring(1) || 'home';
+            showPage(initialPage);
         });
     </script>
 </body>
