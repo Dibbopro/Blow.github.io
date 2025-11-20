@@ -18,6 +18,7 @@
             --text-dark: #333333;
             --minecraft-green: #55FF55;
             --minecraft-dark-green: #00AA00;
+            --special-glow: #FF6B00;
         }
         
         * {
@@ -342,6 +343,11 @@
             transform: scale(1.05) translateY(-10px);
         }
         
+        .pricing-card.special {
+            border-color: var(--special-glow);
+            animation: glow 2s infinite alternate;
+        }
+        
         .popular-badge {
             position: absolute;
             top: 0;
@@ -352,6 +358,19 @@
             font-size: 14px;
             font-weight: bold;
             border-bottom-left-radius: 5px;
+        }
+        
+        .special-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: linear-gradient(45deg, var(--special-glow), #FFD700);
+            color: var(--text-dark);
+            padding: 5px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            border-bottom-left-radius: 5px;
+            animation: pulse-glow 2s infinite;
         }
         
         .pricing-card h3 {
@@ -411,6 +430,14 @@
             background-color: var(--primary-yellow);
             color: var(--text-dark);
             margin-top: 20px;
+        }
+        
+        .btn-special {
+            width: 100%;
+            background: linear-gradient(45deg, var(--special-glow), #FFD700);
+            color: var(--text-dark);
+            margin-top: 20px;
+            font-weight: bold;
         }
         
         /* VPS Section */
@@ -758,6 +785,17 @@
             100% { transform: scale(1); }
         }
         
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(255, 107, 0, 0.5); }
+            100% { box-shadow: 0 0 20px rgba(255, 107, 0, 0.8), 0 0 30px rgba(255, 107, 0, 0.6); }
+        }
+        
+        @keyframes pulse-glow {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
         .pulse {
             animation: pulse 2s infinite;
         }
@@ -930,19 +968,18 @@
                     <p>Choose the perfect plan for your Minecraft server. All plans include our premium features.</p>
                 </div>
                 <div class="pricing-grid">
-                    <!-- Minecraft Plans with ₹80/GB Pricing -->
+                    <!-- Minecraft Plans with Updated Pricing -->
                     <div class="pricing-card fade-in">
-                        <h3>Dirt</h3>
-                        <div class="price">$1.00<span>/month</span></div>
-                        <div class="inr-price">₹80/month</div>
-                        <div class="price-per-gb">₹80/GB RAM</div>
+                        <h3>Stone</h3>
+                        <div class="price">₹140<span>/month</span></div>
+                        <div class="price-per-gb">₹70/GB RAM</div>
                         <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> 1GB RAM</li>
-                            <li><i class="fas fa-check"></i> 1 vCPU Core</li>
-                            <li><i class="fas fa-check"></i> Unlimited SSD Storage</li>
+                            <li><i class="fas fa-check"></i> 2GB RAM</li>
+                            <li><i class="fas fa-check"></i> 100% CPU Priority</li>
+                            <li><i class="fas fa-check"></i> 20GB Storage</li>
+                            <li><i class="fas fa-check"></i> 1 Backup Slot</li>
                             <li><i class="fas fa-check"></i> Unlimited Slots</li>
                             <li><i class="fas fa-check"></i> Free Subdomain</li>
-                            <li><i class="fas fa-check"></i> 24/7 Support</li>
                         </ul>
                         <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
                             <i class="fab fa-discord"></i> Order on Discord
@@ -950,34 +987,32 @@
                     </div>
                     <div class="pricing-card popular fade-in">
                         <div class="popular-badge">MOST POPULAR</div>
-                        <h3>Stone</h3>
-                        <div class="price">$2.00<span>/month</span></div>
-                        <div class="inr-price">₹160/month</div>
-                        <div class="price-per-gb">₹80/GB RAM</div>
+                        <h3>Iron</h3>
+                        <div class="price">₹299<span>/month</span></div>
+                        <div class="price-per-gb">₹75/GB RAM</div>
                         <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> 2GB RAM</li>
-                            <li><i class="fas fa-check"></i> 2 vCPU Cores</li>
-                            <li><i class="fas fa-check"></i> Unlimited SSD Storage</li>
+                            <li><i class="fas fa-check"></i> 4GB RAM</li>
+                            <li><i class="fas fa-check"></i> 200% CPU Priority</li>
+                            <li><i class="fas fa-check"></i> 30GB Storage</li>
+                            <li><i class="fas fa-check"></i> 1 Backup Slot</li>
                             <li><i class="fas fa-check"></i> Unlimited Slots</li>
                             <li><i class="fas fa-check"></i> Free Subdomain</li>
-                            <li><i class="fas fa-check"></i> 24/7 Priority Support</li>
                         </ul>
                         <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn pulse">
                             <i class="fab fa-discord"></i> Order on Discord
                         </a>
                     </div>
                     <div class="pricing-card fade-in">
-                        <h3>Iron</h3>
-                        <div class="price">$4.00<span>/month</span></div>
-                        <div class="inr-price">₹320/month</div>
-                        <div class="price-per-gb">₹80/GB RAM</div>
+                        <h3>Gold</h3>
+                        <div class="price">₹420<span>/month</span></div>
+                        <div class="price-per-gb">₹70/GB RAM</div>
                         <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> 4GB RAM</li>
-                            <li><i class="fas fa-check"></i> 3 vCPU Cores</li>
-                            <li><i class="fas fa-check"></i> Unlimited SSD Storage</li>
+                            <li><i class="fas fa-check"></i> 6GB RAM</li>
+                            <li><i class="fas fa-check"></i> 250% CPU Priority</li>
+                            <li><i class="fas fa-check"></i> 40GB Storage</li>
+                            <li><i class="fas fa-check"></i> 1 Backup Slot</li>
                             <li><i class="fas fa-check"></i> Unlimited Slots</li>
                             <li><i class="fas fa-check"></i> Free Subdomain</li>
-                            <li><i class="fas fa-check"></i> 24/7 Priority Support</li>
                         </ul>
                         <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
                             <i class="fab fa-discord"></i> Order on Discord
@@ -985,16 +1020,15 @@
                     </div>
                     <div class="pricing-card fade-in">
                         <h3>Diamond</h3>
-                        <div class="price">$8.00<span>/month</span></div>
-                        <div class="inr-price">₹640/month</div>
-                        <div class="price-per-gb">₹80/GB RAM</div>
+                        <div class="price">₹599<span>/month</span></div>
+                        <div class="price-per-gb">₹75/GB RAM</div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i> 8GB RAM</li>
-                            <li><i class="fas fa-check"></i> 4 vCPU Cores</li>
-                            <li><i class="fas fa-check"></i> Unlimited SSD Storage</li>
+                            <li><i class="fas fa-check"></i> 300% CPU Priority</li>
+                            <li><i class="fas fa-check"></i> 50GB Storage</li>
+                            <li><i class="fas fa-check"></i> 3 Backup Slots</li>
                             <li><i class="fas fa-check"></i> Unlimited Slots</li>
                             <li><i class="fas fa-check"></i> Free Subdomain</li>
-                            <li><i class="fas fa-check"></i> 24/7 Priority Support</li>
                         </ul>
                         <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
                             <i class="fab fa-discord"></i> Order on Discord
@@ -1010,50 +1044,48 @@
                 <div class="pricing-grid">
                     <div class="pricing-card fade-in">
                         <h3>Netherite</h3>
-                        <div class="price">$12.00<span>/month</span></div>
-                        <div class="inr-price">₹960/month</div>
-                        <div class="price-per-gb">₹60/GB RAM</div>
+                        <div class="price">₹800<span>/month</span></div>
+                        <div class="price-per-gb">₹50/GB RAM</div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i> 16GB RAM</li>
-                            <li><i class="fas fa-check"></i> 6 vCPU Cores</li>
-                            <li><i class="fas fa-check"></i> Unlimited NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> 400% CPU Priority</li>
+                            <li><i class="fas fa-check"></i> 60GB Storage</li>
+                            <li><i class="fas fa-check"></i> 3 Backup Slots</li>
                             <li><i class="fas fa-check"></i> Unlimited Slots</li>
                             <li><i class="fas fa-check"></i> Free Subdomain</li>
-                            <li><i class="fas fa-check"></i> 24/7 Priority Support</li>
                         </ul>
                         <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
                             <i class="fab fa-discord"></i> Order on Discord
                         </a>
                     </div>
-                    <div class="pricing-card fade-in">
+                    <div class="pricing-card special fade-in">
+                        <div class="special-badge">SPECIAL OFFER</div>
                         <h3>Beacon</h3>
-                        <div class="price">$18.00<span>/month</span></div>
-                        <div class="inr-price">₹1440/month</div>
-                        <div class="price-per-gb">₹60/GB RAM</div>
+                        <div class="price">₹999<span>/month</span></div>
+                        <div class="price-per-gb">₹42/GB RAM</div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i> 24GB RAM</li>
-                            <li><i class="fas fa-check"></i> 8 vCPU Cores</li>
-                            <li><i class="fas fa-check"></i> Unlimited NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> 600% CPU Priority</li>
+                            <li><i class="fas fa-check"></i> 80GB Storage</li>
+                            <li><i class="fas fa-check"></i> 4 Backup Slots</li>
                             <li><i class="fas fa-check"></i> Unlimited Slots</li>
                             <li><i class="fas fa-check"></i> Free Subdomain</li>
-                            <li><i class="fas fa-check"></i> 24/7 Priority Support</li>
                         </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-special discord-btn">
                             <i class="fab fa-discord"></i> Order on Discord
                         </a>
                     </div>
                     <div class="pricing-card fade-in">
                         <h3>Ender</h3>
-                        <div class="price">$24.00<span>/month</span></div>
-                        <div class="inr-price">₹1920/month</div>
-                        <div class="price-per-gb">₹60/GB RAM</div>
+                        <div class="price">₹1300<span>/month</span></div>
+                        <div class="price-per-gb">₹41/GB RAM</div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i> 32GB RAM</li>
-                            <li><i class="fas fa-check"></i> 10 vCPU Cores</li>
-                            <li><i class="fas fa-check"></i> Unlimited NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> 600% CPU Priority</li>
+                            <li><i class="fas fa-check"></i> 100GB Storage</li>
+                            <li><i class="fas fa-check"></i> 4 Backup Slots</li>
                             <li><i class="fas fa-check"></i> Unlimited Slots</li>
                             <li><i class="fas fa-check"></i> Free Subdomain</li>
-                            <li><i class="fas fa-check"></i> 24/7 Priority Support</li>
                         </ul>
                         <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
                             <i class="fab fa-discord"></i> Order on Discord
@@ -1071,9 +1103,9 @@
                         <thead>
                             <tr>
                                 <th>Feature</th>
-                                <th>Dirt</th>
                                 <th>Stone</th>
                                 <th>Iron</th>
+                                <th>Gold</th>
                                 <th>Diamond</th>
                                 <th>Netherite</th>
                             </tr>
@@ -1081,51 +1113,43 @@
                         <tbody>
                             <tr>
                                 <td>RAM</td>
-                                <td>1GB</td>
                                 <td>2GB</td>
                                 <td>4GB</td>
+                                <td>6GB</td>
                                 <td>8GB</td>
                                 <td>16GB</td>
                             </tr>
                             <tr>
-                                <td>vCPU Cores</td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>6</td>
+                                <td>CPU Priority</td>
+                                <td>100%</td>
+                                <td>200%</td>
+                                <td>250%</td>
+                                <td>300%</td>
+                                <td>400%</td>
                             </tr>
                             <tr>
                                 <td>Storage</td>
-                                <td>Unlimited SSD</td>
-                                <td>Unlimited SSD</td>
-                                <td>Unlimited SSD</td>
-                                <td>Unlimited SSD</td>
-                                <td>Unlimited NVMe</td>
+                                <td>20GB</td>
+                                <td>30GB</td>
+                                <td>40GB</td>
+                                <td>50GB</td>
+                                <td>60GB</td>
                             </tr>
                             <tr>
-                                <td>Player Slots</td>
-                                <td>Unlimited</td>
-                                <td>Unlimited</td>
-                                <td>Unlimited</td>
-                                <td>Unlimited</td>
-                                <td>Unlimited</td>
-                            </tr>
-                            <tr>
-                                <td>Support</td>
-                                <td>24/7 Basic</td>
-                                <td>24/7 Priority</td>
-                                <td>24/7 Priority</td>
-                                <td>24/7 Priority</td>
-                                <td>24/7 Priority</td>
+                                <td>Backup Slots</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>3</td>
+                                <td>3</td>
                             </tr>
                             <tr>
                                 <td>Price (Monthly)</td>
-                                <td>₹80</td>
-                                <td>₹160</td>
-                                <td>₹320</td>
-                                <td>₹640</td>
-                                <td>₹960</td>
+                                <td>₹140</td>
+                                <td>₹299</td>
+                                <td>₹420</td>
+                                <td>₹599</td>
+                                <td>₹800</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1148,12 +1172,11 @@
                     <p>Full root access, dedicated resources, and complete control over your virtual server.</p>
                 </div>
                 <div class="vps-grid">
-                    <!-- VPS Plans with ₹80/GB Pricing -->
+                    <!-- VPS Plans with Updated Pricing -->
                     <div class="vps-card fade-in">
                         <h3>VPS Starter</h3>
-                        <div class="vps-price">$2.00<span>/month</span></div>
-                        <div class="vps-inr-price">₹160/month</div>
-                        <div class="vps-price-per-gb">₹80/GB RAM</div>
+                        <div class="vps-price">₹299<span>/month</span></div>
+                        <div class="vps-price-per-gb">₹150/GB RAM</div>
                         <ul class="vps-features">
                             <li><i class="fas fa-check"></i> 1 vCPU Core</li>
                             <li><i class="fas fa-check"></i> 2GB RAM</li>
@@ -1169,9 +1192,8 @@
                     <div class="vps-card popular fade-in">
                         <div class="popular-badge">BEST VALUE</div>
                         <h3>VPS Advanced</h3>
-                        <div class="vps-price">$4.00<span>/month</span></div>
-                        <div class="vps-inr-price">₹320/month</div>
-                        <div class="vps-price-per-gb">₹80/GB RAM</div>
+                        <div class="vps-price">₹599<span>/month</span></div>
+                        <div class="vps-price-per-gb">₹150/GB RAM</div>
                         <ul class="vps-features">
                             <li><i class="fas fa-check"></i> 2 vCPU Cores</li>
                             <li><i class="fas fa-check"></i> 4GB RAM</li>
@@ -1186,9 +1208,8 @@
                     </div>
                     <div class="vps-card fade-in">
                         <h3>VPS Professional</h3>
-                        <div class="vps-price">$8.00<span>/month</span></div>
-                        <div class="vps-inr-price">₹640/month</div>
-                        <div class="vps-price-per-gb">₹80/GB RAM</div>
+                        <div class="vps-price">₹1199<span>/month</span></div>
+                        <div class="vps-price-per-gb">₹150/GB RAM</div>
                         <ul class="vps-features">
                             <li><i class="fas fa-check"></i> 4 vCPU Cores</li>
                             <li><i class="fas fa-check"></i> 8GB RAM</li>
@@ -1203,74 +1224,14 @@
                     </div>
                     <div class="vps-card fade-in">
                         <h3>VPS Enterprise</h3>
-                        <div class="vps-price">$16.00<span>/month</span></div>
-                        <div class="vps-inr-price">₹1280/month</div>
-                        <div class="vps-price-per-gb">₹80/GB RAM</div>
+                        <div class="vps-price">₹1799<span>/month</span></div>
+                        <div class="vps-price-per-gb">₹112/GB RAM</div>
                         <ul class="vps-features">
                             <li><i class="fas fa-check"></i> 6 vCPU Cores</li>
                             <li><i class="fas fa-check"></i> 16GB RAM</li>
                             <li><i class="fas fa-check"></i> 200GB NVMe Storage</li>
                             <li><i class="fas fa-check"></i> 6TB Bandwidth</li>
                             <li><i class="fas fa-check"></i> 2 IPv4 Addresses</li>
-                            <li><i class="fas fa-check"></i> Full Root Access</li>
-                        </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn">
-                            <i class="fab fa-discord"></i> Order on Discord
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- High Performance VPS Plans -->
-                <div class="section-title" style="margin-top: 80px;">
-                    <h2>High Performance VPS</h2>
-                    <p>For demanding applications and high-traffic websites.</p>
-                </div>
-                <div class="vps-grid">
-                    <div class="vps-card fade-in">
-                        <h3>VPS Power</h3>
-                        <div class="vps-price">$24.00<span>/month</span></div>
-                        <div class="vps-inr-price">₹1920/month</div>
-                        <div class="vps-price-per-gb">₹60/GB RAM</div>
-                        <ul class="vps-features">
-                            <li><i class="fas fa-check"></i> 8 vCPU Cores</li>
-                            <li><i class="fas fa-check"></i> 32GB RAM</li>
-                            <li><i class="fas fa-check"></i> 300GB NVMe Storage</li>
-                            <li><i class="fas fa-check"></i> 8TB Bandwidth</li>
-                            <li><i class="fas fa-check"></i> 3 IPv4 Addresses</li>
-                            <li><i class="fas fa-check"></i> Full Root Access</li>
-                        </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn">
-                            <i class="fab fa-discord"></i> Order on Discord
-                        </a>
-                    </div>
-                    <div class="vps-card fade-in">
-                        <h3>VPS Ultimate</h3>
-                        <div class="vps-price">$36.00<span>/month</span></div>
-                        <div class="vps-inr-price">₹2880/month</div>
-                        <div class="vps-price-per-gb">₹60/GB RAM</div>
-                        <ul class="vps-features">
-                            <li><i class="fas fa-check"></i> 12 vCPU Cores</li>
-                            <li><i class="fas fa-check"></i> 48GB RAM</li>
-                            <li><i class="fas fa-check"></i> 500GB NVMe Storage</li>
-                            <li><i class="fas fa-check"></i> 10TB Bandwidth</li>
-                            <li><i class="fas fa-check"></i> 4 IPv4 Addresses</li>
-                            <li><i class="fas fa-check"></i> Full Root Access</li>
-                        </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn">
-                            <i class="fab fa-discord"></i> Order on Discord
-                        </a>
-                    </div>
-                    <div class="vps-card fade-in">
-                        <h3>VPS Extreme</h3>
-                        <div class="vps-price">$48.00<span>/month</span></div>
-                        <div class="vps-inr-price">₹3840/month</div>
-                        <div class="vps-price-per-gb">₹60/GB RAM</div>
-                        <ul class="vps-features">
-                            <li><i class="fas fa-check"></i> 16 vCPU Cores</li>
-                            <li><i class="fas fa-check"></i> 64GB RAM</li>
-                            <li><i class="fas fa-check"></i> 750GB NVMe Storage</li>
-                            <li><i class="fas fa-check"></i> 15TB Bandwidth</li>
-                            <li><i class="fas fa-check"></i> 5 IPv4 Addresses</li>
                             <li><i class="fas fa-check"></i> Full Root Access</li>
                         </ul>
                         <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn">
