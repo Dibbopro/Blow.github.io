@@ -378,6 +378,12 @@
             margin-bottom: 10px;
         }
         
+        .price-per-gb {
+            font-size: 14px;
+            color: #AAAAAA;
+            margin-bottom: 15px;
+        }
+        
         .pricing-features {
             list-style: none;
             margin: 25px 0;
@@ -478,6 +484,12 @@
             font-size: 18px;
             color: var(--light-yellow);
             margin-bottom: 10px;
+        }
+        
+        .vps-price-per-gb {
+            font-size: 14px;
+            color: #AAAAAA;
+            margin-bottom: 15px;
         }
         
         .vps-features {
@@ -769,6 +781,20 @@
         .page-section.active {
             display: block;
         }
+        
+        /* Discord Button */
+        .discord-btn {
+            background-color: #5865F2;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .discord-btn:hover {
+            background-color: #4752c4;
+        }
     </style>
 </head>
 <body>
@@ -790,7 +816,9 @@
             </nav>
             <div class="auth-buttons">
                 <a href="#" class="btn btn-login">Client Area</a>
-                <a href="#" class="btn btn-register" data-page="minecraft">Get Started</a>
+                <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-register discord-btn">
+                    <i class="fab fa-discord"></i> Join Discord
+                </a>
             </div>
         </div>
     </header>
@@ -869,8 +897,9 @@
                 <div class="pricing-grid">
                     <div class="pricing-card fade-in">
                         <h3>Dirt</h3>
-                        <div class="price">$2.50<span>/month</span></div>
-                        <div class="inr-price">₹210/month</div>
+                        <div class="price">$0.99<span>/month</span></div>
+                        <div class="inr-price">₹80/month</div>
+                        <div class="price-per-gb">₹80/GB RAM</div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i> 1GB RAM</li>
                             <li><i class="fas fa-check"></i> 1 vCPU Core</li>
@@ -878,13 +907,16 @@
                             <li><i class="fas fa-check"></i> Unlimited Slots</li>
                             <li><i class="fas fa-check"></i> Basic Support</li>
                         </ul>
-                        <a href="#" class="btn btn-pricing">Get Started</a>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
                     </div>
                     <div class="pricing-card popular fade-in">
                         <div class="popular-badge">MOST POPULAR</div>
                         <h3>Stone</h3>
-                        <div class="price">$5<span>/month</span></div>
-                        <div class="inr-price">₹420/month</div>
+                        <div class="price">$1.99<span>/month</span></div>
+                        <div class="inr-price">₹160/month</div>
+                        <div class="price-per-gb">₹80/GB RAM</div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i> 2GB RAM</li>
                             <li><i class="fas fa-check"></i> 2 vCPU Cores</li>
@@ -893,12 +925,15 @@
                             <li><i class="fas fa-check"></i> Priority Support</li>
                             <li><i class="fas fa-check"></i> Free Subdomain</li>
                         </ul>
-                        <a href="#" class="btn btn-pricing pulse">Get Started</a>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn pulse">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
                     </div>
                     <div class="pricing-card fade-in">
                         <h3>Iron</h3>
-                        <div class="price">$8<span>/month</span></div>
-                        <div class="inr-price">₹670/month</div>
+                        <div class="price">$3.99<span>/month</span></div>
+                        <div class="inr-price">₹320/month</div>
+                        <div class="price-per-gb">₹80/GB RAM</div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i> 4GB RAM</li>
                             <li><i class="fas fa-check"></i> 3 vCPU Cores</li>
@@ -907,12 +942,15 @@
                             <li><i class="fas fa-check"></i> 24/7 Premium Support</li>
                             <li><i class="fas fa-check"></i> Free Domain</li>
                         </ul>
-                        <a href="#" class="btn btn-pricing">Get Started</a>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
                     </div>
                     <div class="pricing-card fade-in">
                         <h3>Diamond</h3>
-                        <div class="price">$12<span>/month</span></div>
-                        <div class="inr-price">₹1000/month</div>
+                        <div class="price">$7.99<span>/month</span></div>
+                        <div class="inr-price">₹640/month</div>
+                        <div class="price-per-gb">₹80/GB RAM</div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i> 8GB RAM</li>
                             <li><i class="fas fa-check"></i> 4 vCPU Cores</li>
@@ -921,7 +959,9 @@
                             <li><i class="fas fa-check"></i> 24/7 Premium Support</li>
                             <li><i class="fas fa-check"></i> Free Domain + SSL</li>
                         </ul>
-                        <a href="#" class="btn btn-pricing">Get Started</a>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
                     </div>
                 </div>
                 
@@ -933,8 +973,9 @@
                 <div class="pricing-grid">
                     <div class="pricing-card fade-in">
                         <h3>Netherite</h3>
-                        <div class="price">$18<span>/month</span></div>
-                        <div class="inr-price">₹1500/month</div>
+                        <div class="price">$11.99<span>/month</span></div>
+                        <div class="inr-price">₹960/month</div>
+                        <div class="price-per-gb">₹60/GB RAM</div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i> 16GB RAM</li>
                             <li><i class="fas fa-check"></i> 6 vCPU Cores</li>
@@ -943,12 +984,15 @@
                             <li><i class="fas fa-check"></i> Priority Support</li>
                             <li><i class="fas fa-check"></i> Free Domain + SSL</li>
                         </ul>
-                        <a href="#" class="btn btn-pricing">Get Started</a>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
                     </div>
                     <div class="pricing-card fade-in">
                         <h3>Beacon</h3>
-                        <div class="price">$25<span>/month</span></div>
-                        <div class="inr-price">₹2100/month</div>
+                        <div class="price">$17.99<span>/month</span></div>
+                        <div class="inr-price">₹1440/month</div>
+                        <div class="price-per-gb">₹60/GB RAM</div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i> 24GB RAM</li>
                             <li><i class="fas fa-check"></i> 8 vCPU Cores</li>
@@ -957,12 +1001,15 @@
                             <li><i class="fas fa-check"></i> Priority Support</li>
                             <li><i class="fas fa-check"></i> Free Domain + SSL</li>
                         </ul>
-                        <a href="#" class="btn btn-pricing">Get Started</a>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
                     </div>
                     <div class="pricing-card fade-in">
                         <h3>Ender</h3>
-                        <div class="price">$32<span>/month</span></div>
-                        <div class="inr-price">₹2700/month</div>
+                        <div class="price">$23.99<span>/month</span></div>
+                        <div class="inr-price">₹1920/month</div>
+                        <div class="price-per-gb">₹60/GB RAM</div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i> 32GB RAM</li>
                             <li><i class="fas fa-check"></i> 10 vCPU Cores</li>
@@ -971,7 +1018,9 @@
                             <li><i class="fas fa-check"></i> Priority Support</li>
                             <li><i class="fas fa-check"></i> Free Domain + SSL</li>
                         </ul>
-                        <a href="#" class="btn btn-pricing">Get Started</a>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
                     </div>
                 </div>
             </div>
@@ -994,8 +1043,9 @@
                 <div class="vps-grid">
                     <div class="vps-card fade-in">
                         <h3>VPS Starter</h3>
-                        <div class="vps-price">$6<span>/month</span></div>
-                        <div class="vps-inr-price">₹500/month</div>
+                        <div class="vps-price">$2.49<span>/month</span></div>
+                        <div class="vps-inr-price">₹200/month</div>
+                        <div class="vps-price-per-gb">₹100/GB RAM</div>
                         <ul class="vps-features">
                             <li><i class="fas fa-check"></i> 1 vCPU Core</li>
                             <li><i class="fas fa-check"></i> 2GB RAM</li>
@@ -1004,13 +1054,16 @@
                             <li><i class="fas fa-check"></i> 1 IPv4 Address</li>
                             <li><i class="fas fa-check"></i> Full Root Access</li>
                         </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps">Order Now</a>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
                     </div>
                     <div class="vps-card popular fade-in">
                         <div class="popular-badge">BEST VALUE</div>
                         <h3>VPS Advanced</h3>
-                        <div class="vps-price">$12<span>/month</span></div>
-                        <div class="vps-inr-price">₹1000/month</div>
+                        <div class="vps-price">$4.99<span>/month</span></div>
+                        <div class="vps-inr-price">₹400/month</div>
+                        <div class="vps-price-per-gb">₹100/GB RAM</div>
                         <ul class="vps-features">
                             <li><i class="fas fa-check"></i> 2 vCPU Cores</li>
                             <li><i class="fas fa-check"></i> 4GB RAM</li>
@@ -1019,12 +1072,15 @@
                             <li><i class="fas fa-check"></i> 1 IPv4 Address</li>
                             <li><i class="fas fa-check"></i> Full Root Access</li>
                         </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps pulse">Order Now</a>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn pulse">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
                     </div>
                     <div class="vps-card fade-in">
                         <h3>VPS Professional</h3>
-                        <div class="vps-price">$20<span>/month</span></div>
-                        <div class="vps-inr-price">₹1670/month</div>
+                        <div class="vps-price">$9.99<span>/month</span></div>
+                        <div class="vps-inr-price">₹800/month</div>
+                        <div class="vps-price-per-gb">₹100/GB RAM</div>
                         <ul class="vps-features">
                             <li><i class="fas fa-check"></i> 4 vCPU Cores</li>
                             <li><i class="fas fa-check"></i> 8GB RAM</li>
@@ -1033,12 +1089,15 @@
                             <li><i class="fas fa-check"></i> 2 IPv4 Addresses</li>
                             <li><i class="fas fa-check"></i> Full Root Access</li>
                         </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps">Order Now</a>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
                     </div>
                     <div class="vps-card fade-in">
                         <h3>VPS Enterprise</h3>
-                        <div class="vps-price">$35<span>/month</span></div>
-                        <div class="vps-inr-price">₹2920/month</div>
+                        <div class="vps-price">$19.99<span>/month</span></div>
+                        <div class="vps-inr-price">₹1600/month</div>
+                        <div class="vps-price-per-gb">₹100/GB RAM</div>
                         <ul class="vps-features">
                             <li><i class="fas fa-check"></i> 6 vCPU Cores</li>
                             <li><i class="fas fa-check"></i> 16GB RAM</li>
@@ -1047,7 +1106,9 @@
                             <li><i class="fas fa-check"></i> 2 IPv4 Addresses</li>
                             <li><i class="fas fa-check"></i> Full Root Access</li>
                         </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps">Order Now</a>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
                     </div>
                 </div>
                 
@@ -1059,8 +1120,9 @@
                 <div class="vps-grid">
                     <div class="vps-card fade-in">
                         <h3>VPS Power</h3>
-                        <div class="vps-price">$50<span>/month</span></div>
-                        <div class="vps-inr-price">₹4170/month</div>
+                        <div class="vps-price">$29.99<span>/month</span></div>
+                        <div class="vps-inr-price">₹2400/month</div>
+                        <div class="vps-price-per-gb">₹75/GB RAM</div>
                         <ul class="vps-features">
                             <li><i class="fas fa-check"></i> 8 vCPU Cores</li>
                             <li><i class="fas fa-check"></i> 32GB RAM</li>
@@ -1069,12 +1131,15 @@
                             <li><i class="fas fa-check"></i> 3 IPv4 Addresses</li>
                             <li><i class="fas fa-check"></i> Full Root Access</li>
                         </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps">Order Now</a>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
                     </div>
                     <div class="vps-card fade-in">
                         <h3>VPS Ultimate</h3>
-                        <div class="vps-price">$75<span>/month</span></div>
-                        <div class="vps-inr-price">₹6250/month</div>
+                        <div class="vps-price">$44.99<span>/month</span></div>
+                        <div class="vps-inr-price">₹3600/month</div>
+                        <div class="vps-price-per-gb">₹75/GB RAM</div>
                         <ul class="vps-features">
                             <li><i class="fas fa-check"></i> 12 vCPU Cores</li>
                             <li><i class="fas fa-check"></i> 48GB RAM</li>
@@ -1083,12 +1148,15 @@
                             <li><i class="fas fa-check"></i> 4 IPv4 Addresses</li>
                             <li><i class="fas fa-check"></i> Full Root Access</li>
                         </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps">Order Now</a>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
                     </div>
                     <div class="vps-card fade-in">
                         <h3>VPS Extreme</h3>
-                        <div class="vps-price">$100<span>/month</span></div>
-                        <div class="vps-inr-price">₹8350/month</div>
+                        <div class="vps-price">$59.99<span>/month</span></div>
+                        <div class="vps-inr-price">₹4800/month</div>
+                        <div class="vps-price-per-gb">₹75/GB RAM</div>
                         <ul class="vps-features">
                             <li><i class="fas fa-check"></i> 16 vCPU Cores</li>
                             <li><i class="fas fa-check"></i> 64GB RAM</li>
@@ -1097,7 +1165,9 @@
                             <li><i class="fas fa-check"></i> 5 IPv4 Addresses</li>
                             <li><i class="fas fa-check"></i> Full Root Access</li>
                         </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps">Order Now</a>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1303,34 +1373,6 @@
                     // Add active class to clicked card
                     this.classList.add('active');
                 });
-            });
-            
-            // Simple form submission simulation for Minecraft plans
-            const minecraftButtons = document.querySelectorAll('.btn-pricing');
-            minecraftButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const planName = this.closest('.pricing-card').querySelector('h3').textContent;
-                    alert(`Thank you for your interest in the ${planName} plan! You would now be redirected to our order page.`);
-                });
-            });
-            
-            // Discord redirect for VPS plans
-            const vpsButtons = document.querySelectorAll('.btn-vps');
-            vpsButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    // Let the link work normally (opens Discord)
-                    // We don't prevent default here
-                    const planName = this.closest('.vps-card').querySelector('h3').textContent;
-                    // Optional: You could add analytics tracking here
-                    console.log(`User clicked on ${planName} VPS plan`);
-                });
-            });
-            
-            // Login/Register button actions
-            document.querySelector('.btn-login').addEventListener('click', function(e) {
-                e.preventDefault();
-                alert('Redirecting to client area login...');
             });
             
             // Set initial page based on URL hash
