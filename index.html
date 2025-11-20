@@ -6,7 +6,438 @@
     <title>BlowNodes - Premium Minecraft Server Hosting</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ... (previous CSS remains exactly the same) ... */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff4d94;
+            --dark: #1a1a2e;
+            --darker: #0f0f1a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #28a745;
+        }
+
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(106, 17, 203, 0.3);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            color: var(--accent);
+            font-size: 28px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+            background: rgba(255, 77, 148, 0.1);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-login {
+            background: transparent;
+            color: var(--light);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-login:hover {
+            background: rgba(106, 17, 203, 0.2);
+        }
+
+        .btn-register {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+        }
+
+        .discord-btn {
+            background: #5865F2;
+        }
+
+        .discord-btn:hover {
+            background: #4752c4;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+            padding: 60px 0;
+            min-height: 80vh;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Page Navigation */
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .page-nav-btn {
+            background: none;
+            border: none;
+            color: var(--light);
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .page-nav-btn.active {
+            color: var(--accent);
+        }
+
+        .page-nav-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px 3px 0 0;
+        }
+
+        .page-nav-btn:hover:not(.active) {
+            color: var(--secondary);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .pricing-card {
+            background: rgba(26, 26, 46, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(106, 17, 203, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(106, 17, 203, 0.3);
+            border-color: var(--primary);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .pricing-card.special {
+            border-color: gold;
+        }
+
+        .popular-badge, .special-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .special-badge {
+            background: gold;
+            color: var(--dark);
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .price {
+            font-size: 42px;
+            font-weight: 700;
+            text-align: center;
+            margin: 15px 0;
+            color: var(--accent);
+        }
+
+        .price span {
+            font-size: 16px;
+            color: var(--gray);
+        }
+
+        .price-per-gb {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 20px 0;
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+
+        .btn-pricing {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            justify-content: center;
+            margin-top: 15px;
+            padding: 12px;
+        }
+
+        .btn-pricing:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(37, 117, 252, 0.4);
+        }
+
+        .btn-special {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: var(--dark);
+            text-align: center;
+            justify-content: center;
+            margin-top: 15px;
+            padding: 12px;
+            font-weight: 700;
+        }
+
+        .btn-special:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Plan Comparison */
+        .plan-comparison {
+            margin-top: 80px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(26, 26, 46, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .comparison-table th {
+            background: rgba(106, 17, 203, 0.2);
+            font-weight: 600;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(106, 17, 203, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 77, 148, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 77, 148, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 77, 148, 0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            
+            .pricing-card.popular:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page-nav {
+                flex-wrap: wrap;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -37,7 +468,7 @@
 
     <!-- Home Page -->
     <section id="home" class="page-section active">
-        <!-- ... (Home page content remains exactly the same) ... -->
+        <!-- Home page content -->
     </section>
 
     <!-- Minecraft Plans Page -->
@@ -258,21 +689,254 @@
 
     <!-- VPS Plans Page -->
     <section id="vps" class="page-section">
-        <!-- ... (VPS page content remains exactly the same) ... -->
+        <div class="page-nav">
+            <button class="page-nav-btn" data-page="minecraft">Minecraft Plans</button>
+            <button class="page-nav-btn active" data-page="vps">VPS Plans</button>
+        </div>
+        
+        <section class="pricing">
+            <div class="container">
+                <div class="section-title">
+                    <h2>VPS Hosting Plans</h2>
+                    <p>Intel Platinum 8168 VPS plans on our optimized infrastructure. All plans include full root access.</p>
+                </div>
+                <div class="pricing-grid">
+                    <!-- VPS Plans copied from creepercastle.cloud with 30% price increase -->
+                    <div class="pricing-card fade-in">
+                        <h3>Blow Mini</h3>
+                        <div class="price">₹259<span>/month</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> Intel Platinum 8168</li>
+                            <li><i class="fas fa-check"></i> 2 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 4GB DDR4 ECC RAM</li>
+                            <li><i class="fas fa-check"></i> 20GB NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> Upto 1Gbps Network Speed</li>
+                            <li><i class="fas fa-check"></i> India, Delhi Location</li>
+                            <li><i class="fas fa-check"></i> 17 Tbps DDoS Protection</li>
+                            <li><i class="fas fa-check"></i> RDNS Facility Available</li>
+                        </ul>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
+                    </div>
+                    <div class="pricing-card popular fade-in">
+                        <div class="popular-badge">MOST POPULAR</div>
+                        <h3>Blow Knight</h3>
+                        <div class="price">₹519<span>/month</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> Intel Platinum 8168</li>
+                            <li><i class="fas fa-check"></i> 4 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 8GB DDR4 ECC RAM</li>
+                            <li><i class="fas fa-check"></i> 40GB NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> Upto 1Gbps Network Speed</li>
+                            <li><i class="fas fa-check"></i> India, Delhi Location</li>
+                            <li><i class="fas fa-check"></i> 17 Tbps DDoS Protection</li>
+                            <li><i class="fas fa-check"></i> RDNS Facility Available</li>
+                        </ul>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn pulse">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
+                    </div>
+                    <div class="pricing-card fade-in">
+                        <h3>Blow Titan</h3>
+                        <div class="price">₹909<span>/month</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> Intel Platinum 8168</li>
+                            <li><i class="fas fa-check"></i> 6 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 16GB DDR4 ECC RAM</li>
+                            <li><i class="fas fa-check"></i> 60GB NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> Upto 1Gbps Network Speed</li>
+                            <li><i class="fas fa-check"></i> India, Delhi Location</li>
+                            <li><i class="fas fa-check"></i> 17 Tbps DDoS Protection</li>
+                            <li><i class="fas fa-check"></i> RDNS Facility Available</li>
+                        </ul>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
+                    </div>
+                    <div class="pricing-card fade-in">
+                        <h3>Blow Guardian</h3>
+                        <div class="price">₹1,559<span>/month</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> Intel Platinum 8168</li>
+                            <li><i class="fas fa-check"></i> 10 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 32GB DDR4 ECC RAM</li>
+                            <li><i class="fas fa-check"></i> 100GB NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> Upto 1Gbps Network Speed</li>
+                            <li><i class="fas fa-check"></i> India, Delhi Location</li>
+                            <li><i class="fas fa-check"></i> 17 Tbps DDoS Protection</li>
+                            <li><i class="fas fa-check"></i> RDNS Facility Available</li>
+                        </ul>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
+                    </div>
+                    <div class="pricing-card special fade-in">
+                        <div class="special-badge">SPECIAL OFFER</div>
+                        <h3>Blow Overlord</h3>
+                        <div class="price">₹2,729<span>/month</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> Intel Platinum 8168</li>
+                            <li><i class="fas fa-check"></i> 20 vCPU Cores</li>
+                            <li><i class="fas fa-check"></i> 64GB DDR4 ECC RAM</li>
+                            <li><i class="fas fa-check"></i> 200GB NVMe Storage</li>
+                            <li><i class="fas fa-check"></i> Upto 1Gbps Network Speed</li>
+                            <li><i class="fas fa-check"></i> India, Delhi Location</li>
+                            <li><i class="fas fa-check"></i> 17 Tbps DDoS Protection</li>
+                            <li><i class="fas fa-check"></i> RDNS Facility Available</li>
+                        </ul>
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-special discord-btn">
+                            <i class="fab fa-discord"></i> Order on Discord
+                        </a>
+                    </div>
+                </div>
+
+                <!-- VPS Plan Comparison -->
+                <div class="plan-comparison">
+                    <div class="section-title">
+                        <h2>VPS Plan Comparison</h2>
+                        <p>Compare our VPS hosting plans to find the perfect fit for your needs</p>
+                    </div>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Blow Mini</th>
+                                <th>Blow Knight</th>
+                                <th>Blow Titan</th>
+                                <th>Blow Guardian</th>
+                                <th>Blow Overlord</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>vCPU Cores</td>
+                                <td>2</td>
+                                <td>4</td>
+                                <td>6</td>
+                                <td>10</td>
+                                <td>20</td>
+                            </tr>
+                            <tr>
+                                <td>RAM</td>
+                                <td>4GB</td>
+                                <td>8GB</td>
+                                <td>16GB</td>
+                                <td>32GB</td>
+                                <td>64GB</td>
+                            </tr>
+                            <tr>
+                                <td>Storage</td>
+                                <td>20GB NVMe</td>
+                                <td>40GB NVMe</td>
+                                <td>60GB NVMe</td>
+                                <td>100GB NVMe</td>
+                                <td>200GB NVMe</td>
+                            </tr>
+                            <tr>
+                                <td>Network Speed</td>
+                                <td>1Gbps</td>
+                                <td>1Gbps</td>
+                                <td>1Gbps</td>
+                                <td>1Gbps</td>
+                                <td>1Gbps</td>
+                            </tr>
+                            <tr>
+                                <td>Location</td>
+                                <td>India, Delhi</td>
+                                <td>India, Delhi</td>
+                                <td>India, Delhi</td>
+                                <td>India, Delhi</td>
+                                <td>India, Delhi</td>
+                            </tr>
+                            <tr>
+                                <td>DDoS Protection</td>
+                                <td>17 Tbps</td>
+                                <td>17 Tbps</td>
+                                <td>17 Tbps</td>
+                                <td>17 Tbps</td>
+                                <td>17 Tbps</td>
+                            </tr>
+                            <tr>
+                                <td>Price (Monthly)</td>
+                                <td>₹259</td>
+                                <td>₹519</td>
+                                <td>₹909</td>
+                                <td>₹1,559</td>
+                                <td>₹2,729</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
     </section>
 
     <!-- Testimonials Page -->
     <section id="testimonials" class="page-section">
-        <!-- ... (Testimonials page content remains exactly the same) ... -->
+        <!-- Testimonials content -->
     </section>
 
     <!-- Support Page -->
     <section id="support" class="page-section">
-        <!-- ... (Support page content remains exactly the same) ... -->
+        <!-- Support content -->
     </section>
 
     <script>
-        // ... (JavaScript remains exactly the same) ...
+        // Page Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set active page
+            const pageLinks = document.querySelectorAll('nav a, .page-nav-btn');
+            
+            pageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetPage = this.getAttribute('data-page');
+                    
+                    // Hide all pages
+                    document.querySelectorAll('.page-section').forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    
+                    // Show target page
+                    document.getElementById(targetPage).classList.add('active');
+                    
+                    // Update active nav button
+                    document.querySelectorAll('.page-nav-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    if (this.classList.contains('page-nav-btn')) {
+                        this.classList.add('active');
+                    } else {
+                        // If it's a header nav link, find and activate the corresponding page nav button
+                        const pageNavBtn = document.querySelector(`.page-nav-btn[data-page="${targetPage}"]`);
+                        if (pageNavBtn) {
+                            pageNavBtn.classList.add('active');
+                        }
+                    }
+                });
+            });
+            
+            // Add fade-in animation to pricing cards when they come into view
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.pricing-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
     </script>
 </body>
 </html>
