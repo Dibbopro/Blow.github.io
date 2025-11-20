@@ -6,7 +6,877 @@
     <title>BlowNodes - Premium Minecraft Server Hosting</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ... (ALL PREVIOUS CSS REMAINS EXACTLY THE SAME) ... */
+        :root {
+            --primary-yellow: #FFD700;
+            --dark-yellow: #FFC107;
+            --light-yellow: #FFF9C4;
+            --accent-yellow: #FFEB3B;
+            --dark-bg: #1A1A1A;
+            --darker-bg: #111111;
+            --light-bg: #2A2A2A;
+            --text-light: #FFFFFF;
+            --text-dark: #333333;
+            --minecraft-green: #55FF55;
+            --minecraft-dark-green: #00AA00;
+            --special-glow: #FF6B00;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--darker-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            color: var(--primary-yellow);
+            font-size: 28px;
+            margin-left: 10px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        .logo-icon {
+            color: var(--primary-yellow);
+            font-size: 32px;
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7));
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-yellow);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-yellow);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-login {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--primary-yellow);
+        }
+        
+        .btn-register {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%);
+            z-index: 1;
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary-yellow);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #EEEEEE;
+        }
+        
+        .btn-hero {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+        
+        .minecraft-text {
+            font-family: 'Minecraft', monospace;
+            color: var(--minecraft-green);
+            text-shadow: 2px 2px 0 var(--minecraft-dark-green);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+            position: relative;
+        }
+        
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-yellow), var(--accent-yellow), var(--primary-yellow));
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary-yellow);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-yellow);
+        }
+        
+        .section-title p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #CCCCCC;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--dark-bg);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-yellow), var(--accent-yellow));
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-yellow);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-yellow);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary-yellow);
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background-color: var(--dark-bg);
+            position: relative;
+        }
+        
+        .pricing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-yellow), var(--accent-yellow), var(--primary-yellow));
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .pricing-card {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .pricing-card.popular {
+            border-color: var(--primary-yellow);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .pricing-card.special {
+            border-color: var(--special-glow);
+            animation: glow 2s infinite alternate;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+            padding: 5px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .special-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: linear-gradient(45deg, var(--special-glow), #FFD700);
+            color: var(--text-dark);
+            padding: 5px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            border-bottom-left-radius: 5px;
+            animation: pulse-glow 2s infinite;
+        }
+        
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-yellow);
+        }
+        
+        .price {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--text-light);
+        }
+        
+        .price span {
+            font-size: 16px;
+            color: #CCCCCC;
+        }
+        
+        .inr-price {
+            font-size: 18px;
+            color: var(--light-yellow);
+            margin-bottom: 10px;
+        }
+        
+        .price-per-gb {
+            font-size: 14px;
+            color: #AAAAAA;
+            margin-bottom: 15px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .pricing-features li i {
+            color: var(--minecraft-green);
+            margin-right: 10px;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .btn-pricing {
+            width: 100%;
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+            margin-top: 20px;
+        }
+        
+        .btn-special {
+            width: 100%;
+            background: linear-gradient(45deg, var(--special-glow), #FFD700);
+            color: var(--text-dark);
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        
+        /* VPS Section */
+        .vps-section {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+            position: relative;
+        }
+        
+        .vps-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-yellow), var(--accent-yellow), var(--primary-yellow));
+        }
+        
+        .vps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .vps-card {
+            background-color: var(--dark-bg);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        
+        .vps-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary-yellow);
+        }
+        
+        .vps-card.popular {
+            border-color: var(--primary-yellow);
+            transform: scale(1.05);
+        }
+        
+        .vps-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .vps-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-yellow);
+        }
+        
+        .vps-price {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--text-light);
+        }
+        
+        .vps-price span {
+            font-size: 16px;
+            color: #CCCCCC;
+        }
+        
+        .vps-inr-price {
+            font-size: 18px;
+            color: var(--light-yellow);
+            margin-bottom: 10px;
+        }
+        
+        .vps-price-per-gb {
+            font-size: 14px;
+            color: #AAAAAA;
+            margin-bottom: 15px;
+        }
+        
+        .vps-features {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .vps-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: left;
+        }
+        
+        .vps-features li i {
+            color: var(--minecraft-green);
+            margin-right: 10px;
+            min-width: 20px;
+        }
+        
+        .vps-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .btn-vps {
+            width: 100%;
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+            margin-top: 20px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+            position: relative;
+        }
+        
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-yellow), var(--accent-yellow), var(--primary-yellow));
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--dark-bg);
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 60px;
+            color: rgba(255, 215, 0, 0.3);
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-yellow), var(--accent-yellow));
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+        
+        .author-info h4 {
+            color: var(--primary-yellow);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #111111;
+            padding: 60px 0 20px;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-yellow), var(--accent-yellow), var(--primary-yellow));
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: var(--primary-yellow);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #CCCCCC;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-yellow);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-bg);
+            border-radius: 50%;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999999;
+            font-size: 14px;
+        }
+        
+        /* Minecraft elements */
+        .minecraft-border {
+            border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><rect x="0" y="0" width="12" height="12" fill="%23FFD700" /></svg>') 12 round;
+            border-width: 6px;
+            border-style: solid;
+        }
+        
+        .pixel-box {
+            background-color: var(--dark-bg);
+            border: 4px solid var(--primary-yellow);
+            box-shadow: 4px 4px 0 var(--dark-yellow);
+        }
+        
+        /* Page Navigation */
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 10px;
+        }
+        
+        .page-nav-btn {
+            padding: 10px 20px;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            border: 1px solid var(--primary-yellow);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .page-nav-btn.active {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+        }
+        
+        .page-nav-btn:hover {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                margin: 20px 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .auth-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .pricing-card.popular, .vps-card.popular {
+                transform: scale(1);
+            }
+            
+            .pricing-card.popular:hover, .vps-card.popular:hover {
+                transform: translateY(-10px);
+            }
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(255, 107, 0, 0.5); }
+            100% { box-shadow: 0 0 20px rgba(255, 107, 0, 0.8), 0 0 30px rgba(255, 107, 0, 0.6); }
+        }
+        
+        @keyframes pulse-glow {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Page Sections */
+        .page-section {
+            display: none;
+        }
+        
+        .page-section.active {
+            display: block;
+        }
+        
+        /* Discord Button */
+        .discord-btn {
+            background-color: #5865F2;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .discord-btn:hover {
+            background-color: #4752c4;
+        }
+
+        /* Plan comparison */
+        .plan-comparison {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background-color: var(--dark-bg);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+            font-weight: bold;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background-color: rgba(255, 215, 0, 0.1);
+        }
+
+        /* VPS Feature Icons */
+        .vps-feature-icon {
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -37,7 +907,60 @@
 
     <!-- Home Page -->
     <section id="home" class="page-section active">
-        <!-- Home page content -->
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h2>Premium Minecraft & VPS Hosting</h2>
+                <p>Experience lightning-fast performance with our optimized hosting solutions. Get started in minutes with our easy-to-use control panel.</p>
+                <p class="minecraft-text">No lag • Instant setup • 99.9% Uptime</p>
+                <div style="margin-top: 30px;">
+                    <a href="#" class="btn btn-hero" data-page="minecraft">Minecraft Plans</a>
+                    <a href="#" class="btn btn-hero" data-page="vps">VPS Plans</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Why Choose BlowNodes?</h2>
+                    <p>We provide the best hosting experience with cutting-edge technology and exceptional support.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card fade-in">
+                        <i class="fas fa-bolt feature-icon"></i>
+                        <h3>Lightning Fast</h3>
+                        <p>Our servers are optimized for maximum performance with NVMe storage and low latency networks.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <h3>DDoS Protection</h3>
+                        <p>Advanced DDoS protection keeps your server safe from attacks and ensures maximum uptime.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <i class="fas fa-sliders-h feature-icon"></i>
+                        <h3>Easy Control Panel</h3>
+                        <p>Our custom control panel makes server management simple, even for beginners.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <i class="fas fa-headset feature-icon"></i>
+                        <h3>24/7 Support</h3>
+                        <p>Our expert support team is available around the clock to help with any issues.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <i class="fas fa-cloud-upload-alt feature-icon"></i>
+                        <h3>Automatic Backups</h3>
+                        <p>Regular automatic backups ensure your data is always safe and recoverable.</p>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <i class="fas fa-globe feature-icon"></i>
+                        <h3>Global Locations</h3>
+                        <p>Choose from multiple server locations worldwide for the best connection.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </section>
 
     <!-- Minecraft Plans Page -->
@@ -178,80 +1101,6 @@
                         </a>
                     </div>
                 </div>
-
-                <!-- Plan Comparison -->
-                <div class="plan-comparison">
-                    <div class="section-title">
-                        <h2>Plan Comparison</h2>
-                        <p>Compare our Minecraft hosting plans to find the perfect fit for your needs</p>
-                    </div>
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Stone</th>
-                                <th>Iron</th>
-                                <th>Gold</th>
-                                <th>Diamond</th>
-                                <th>Netherite</th>
-                                <th>Beacon</th>
-                                <th>Ender</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>RAM</td>
-                                <td>2GB</td>
-                                <td>4GB</td>
-                                <td>6GB</td>
-                                <td>8GB</td>
-                                <td>16GB</td>
-                                <td>24GB</td>
-                                <td>32GB</td>
-                            </tr>
-                            <tr>
-                                <td>CPU Priority</td>
-                                <td>100%</td>
-                                <td>200%</td>
-                                <td>250%</td>
-                                <td>300%</td>
-                                <td>400%</td>
-                                <td>600%</td>
-                                <td>600%</td>
-                            </tr>
-                            <tr>
-                                <td>Storage</td>
-                                <td>20GB</td>
-                                <td>30GB</td>
-                                <td>40GB</td>
-                                <td>50GB</td>
-                                <td>60GB</td>
-                                <td>80GB</td>
-                                <td>100GB</td>
-                            </tr>
-                            <tr>
-                                <td>Backup Slots</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>3</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>4</td>
-                            </tr>
-                            <tr>
-                                <td>Price (Monthly)</td>
-                                <td>₹140</td>
-                                <td>₹299</td>
-                                <td>₹420</td>
-                                <td>₹599</td>
-                                <td>₹800</td>
-                                <td>₹999</td>
-                                <td>₹1300</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </section>
     </section>
@@ -263,179 +1112,105 @@
             <button class="page-nav-btn active" data-page="vps">VPS Plans</button>
         </div>
         
-        <section class="pricing">
+        <section class="vps-section">
             <div class="container">
                 <div class="section-title">
-                    <h2>VPS Hosting Plans</h2>
-                    <p>Intel Platinum 8168 VPS plans on our optimized infrastructure. All plans include full root access.</p>
+                    <h2>Virtual Private Server Plans</h2>
+                    <p>Intel Platinum 8168 VPS plans on our own optimized infrastructure with 30% more value!</p>
                 </div>
-                <div class="pricing-grid">
-                    <!-- VPS Plans copied from creepercastle.cloud with 30% price increase -->
-                    <div class="pricing-card fade-in">
-                        <h3>Mini</h3>
-                        <div class="price">₹259<span>/month</span></div>
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> Intel Platinum 8168</li>
-                            <li><i class="fas fa-check"></i> 2 vCPU Cores</li>
-                            <li><i class="fas fa-check"></i> 4GB DDR4 ECC RAM</li>
-                            <li><i class="fas fa-check"></i> 20GB NVMe Storage</li>
-                            <li><i class="fas fa-check"></i> Upto 1Gbps Network Speed</li>
-                            <li><i class="fas fa-check"></i> India, Delhi Location</li>
-                            <li><i class="fas fa-check"></i> 17 Tbps DDoS Protection</li>
-                            <li><i class="fas fa-check"></i> RDNS Facility Available</li>
+                <div class="vps-grid">
+                    <!-- Updated VPS Plans with 30% More Value -->
+                    <div class="vps-card fade-in">
+                        <h3>BlowNodes Mini</h3>
+                        <div class="vps-price">₹199<span>/month</span></div>
+                        <ul class="vps-features">
+                            <li><i class="fas fa-microchip vps-feature-icon"></i> Intel Platinum 8168 💎</li>
+                            <li><i class="fas fa-bolt vps-feature-icon"></i> 2V Cores 🚀</li>
+                            <li><i class="fas fa-memory vps-feature-icon"></i> 4 GB DDR4 ECC RAM 🪄</li>
+                            <li><i class="fas fa-hdd vps-feature-icon"></i> 20 GB NVMe Storage🪄</li>
+                            <li><i class="fas fa-network-wired vps-feature-icon"></i> Upto 1Gbps network speed🛜</li>
+                            <li><i class="fas fa-map-marker-alt vps-feature-icon"></i> India, Delhi🚩</li>
+                            <li><i class="fas fa-shield-alt vps-feature-icon"></i> BlowNodes DDoS Protection🛡️</li>
+                            <li><i class="fas fa-bolt vps-feature-icon"></i> 17 Tbps Smart MITIGATION🛡️</li>
+                            <li><i class="fas fa-check vps-feature-icon"></i> RDNS Facility Available✅</li>
                         </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn">
                             <i class="fab fa-discord"></i> Order on Discord
                         </a>
                     </div>
-                    <div class="pricing-card popular fade-in">
+                    <div class="vps-card popular fade-in">
                         <div class="popular-badge">MOST POPULAR</div>
-                        <h3>Knight</h3>
-                        <div class="price">₹519<span>/month</span></div>
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> Intel Platinum 8168</li>
-                            <li><i class="fas fa-check"></i> 4 vCPU Cores</li>
-                            <li><i class="fas fa-check"></i> 8GB DDR4 ECC RAM</li>
-                            <li><i class="fas fa-check"></i> 40GB NVMe Storage</li>
-                            <li><i class="fas fa-check"></i> Upto 1Gbps Network Speed</li>
-                            <li><i class="fas fa-check"></i> India, Delhi Location</li>
-                            <li><i class="fas fa-check"></i> 17 Tbps DDoS Protection</li>
-                            <li><i class="fas fa-check"></i> RDNS Facility Available</li>
+                        <h3>BlowNodes Knight</h3>
+                        <div class="vps-price">₹399<span>/month</span></div>
+                        <ul class="vps-features">
+                            <li><i class="fas fa-microchip vps-feature-icon"></i> Intel Platinum 8168 💎</li>
+                            <li><i class="fas fa-bolt vps-feature-icon"></i> 4V Cores 🚀</li>
+                            <li><i class="fas fa-memory vps-feature-icon"></i> 8 GB DDR4 ECC RAM 🪄</li>
+                            <li><i class="fas fa-hdd vps-feature-icon"></i> 40 GB NVMe Storage🪄</li>
+                            <li><i class="fas fa-network-wired vps-feature-icon"></i> Upto 1Gbps network speed🛜</li>
+                            <li><i class="fas fa-map-marker-alt vps-feature-icon"></i> India, Delhi🚩</li>
+                            <li><i class="fas fa-shield-alt vps-feature-icon"></i> BlowNodes DDoS Protection🛡️</li>
+                            <li><i class="fas fa-bolt vps-feature-icon"></i> 17 Tbps Smart MITIGATION🛡️</li>
+                            <li><i class="fas fa-check vps-feature-icon"></i> RDNS Facility Available✅</li>
                         </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn pulse">
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn pulse">
                             <i class="fab fa-discord"></i> Order on Discord
                         </a>
                     </div>
-                    <div class="pricing-card fade-in">
-                        <h3>Titan</h3>
-                        <div class="price">₹909<span>/month</span></div>
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> Intel Platinum 8168</li>
-                            <li><i class="fas fa-check"></i> 6 vCPU Cores</li>
-                            <li><i class="fas fa-check"></i> 16GB DDR4 ECC RAM</li>
-                            <li><i class="fas fa-check"></i> 60GB NVMe Storage</li>
-                            <li><i class="fas fa-check"></i> Upto 1Gbps Network Speed</li>
-                            <li><i class="fas fa-check"></i> India, Delhi Location</li>
-                            <li><i class="fas fa-check"></i> 17 Tbps DDoS Protection</li>
-                            <li><i class="fas fa-check"></i> RDNS Facility Available</li>
+                    <div class="vps-card fade-in">
+                        <h3>BlowNodes Titan</h3>
+                        <div class="vps-price">₹699<span>/month</span></div>
+                        <ul class="vps-features">
+                            <li><i class="fas fa-microchip vps-feature-icon"></i> Intel Platinum 8168 💎</li>
+                            <li><i class="fas fa-bolt vps-feature-icon"></i> 6V Cores 🚀</li>
+                            <li><i class="fas fa-memory vps-feature-icon"></i> 16 GB DDR4 ECC RAM 🪄</li>
+                            <li><i class="fas fa-hdd vps-feature-icon"></i> 60 GB NVMe Storage🪄</li>
+                            <li><i class="fas fa-network-wired vps-feature-icon"></i> Upto 1Gbps network speed🛜</li>
+                            <li><i class="fas fa-map-marker-alt vps-feature-icon"></i> India, Delhi🚩</li>
+                            <li><i class="fas fa-shield-alt vps-feature-icon"></i> BlowNodes DDoS Protection🛡️</li>
+                            <li><i class="fas fa-bolt vps-feature-icon"></i> 17 Tbps Smart MITIGATION🛡️</li>
+                            <li><i class="fas fa-check vps-feature-icon"></i> RDNS Facility Available✅</li>
                         </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn">
                             <i class="fab fa-discord"></i> Order on Discord
                         </a>
                     </div>
-                    <div class="pricing-card fade-in">
-                        <h3>Guardian</h3>
-                        <div class="price">₹1,559<span>/month</span></div>
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> Intel Platinum 8168</li>
-                            <li><i class="fas fa-check"></i> 10 vCPU Cores</li>
-                            <li><i class="fas fa-check"></i> 32GB DDR4 ECC RAM</li>
-                            <li><i class="fas fa-check"></i> 100GB NVMe Storage</li>
-                            <li><i class="fas fa-check"></i> Upto 1Gbps Network Speed</li>
-                            <li><i class="fas fa-check"></i> India, Delhi Location</li>
-                            <li><i class="fas fa-check"></i> 17 Tbps DDoS Protection</li>
-                            <li><i class="fas fa-check"></i> RDNS Facility Available</li>
+                    <div class="vps-card fade-in">
+                        <h3>BlowNodes Guardian</h3>
+                        <div class="vps-price">₹1,199<span>/month</span></div>
+                        <ul class="vps-features">
+                            <li><i class="fas fa-microchip vps-feature-icon"></i> Intel Platinum 8168 💎</li>
+                            <li><i class="fas fa-bolt vps-feature-icon"></i> 10V Cores 🚀</li>
+                            <li><i class="fas fa-memory vps-feature-icon"></i> 32 GB DDR4 ECC RAM 🪄</li>
+                            <li><i class="fas fa-hdd vps-feature-icon"></i> 100 GB NVMe Storage🪄</li>
+                            <li><i class="fas fa-network-wired vps-feature-icon"></i> Upto 1Gbps network speed🛜</li>
+                            <li><i class="fas fa-map-marker-alt vps-feature-icon"></i> India, Delhi🚩</li>
+                            <li><i class="fas fa-shield-alt vps-feature-icon"></i> BlowNodes DDoS Protection🛡️</li>
+                            <li><i class="fas fa-bolt vps-feature-icon"></i> 17 Tbps Smart MITIGATION🛡️</li>
+                            <li><i class="fas fa-check vps-feature-icon"></i> RDNS Facility Available✅</li>
                         </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-pricing discord-btn">
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn">
                             <i class="fab fa-discord"></i> Order on Discord
                         </a>
                     </div>
-                    <div class="pricing-card special fade-in">
-                        <div class="special-badge">SPECIAL OFFER</div>
-                        <h3>Overlord</h3>
-                        <div class="price">₹2,729<span>/month</span></div>
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> Intel Platinum 8168</li>
-                            <li><i class="fas fa-check"></i> 20 vCPU Cores</li>
-                            <li><i class="fas fa-check"></i> 64GB DDR4 ECC RAM</li>
-                            <li><i class="fas fa-check"></i> 200GB NVMe Storage</li>
-                            <li><i class="fas fa-check"></i> Upto 1Gbps Network Speed</li>
-                            <li><i class="fas fa-check"></i> India, Delhi Location</li>
-                            <li><i class="fas fa-check"></i> 17 Tbps DDoS Protection</li>
-                            <li><i class="fas fa-check"></i> RDNS Facility Available</li>
+                    <div class="vps-card fade-in">
+                        <h3>BlowNodes Overlord</h3>
+                        <div class="vps-price">₹2,099<span>/month</span></div>
+                        <ul class="vps-features">
+                            <li><i class="fas fa-microchip vps-feature-icon"></i> Intel Platinum 8168 💎</li>
+                            <li><i class="fas fa-bolt vps-feature-icon"></i> 20V Cores 🚀</li>
+                            <li><i class="fas fa-memory vps-feature-icon"></i> 64 GB DDR4 ECC RAM 🪄</li>
+                            <li><i class="fas fa-hdd vps-feature-icon"></i> 200 GB NVMe Storage🪄</li>
+                            <li><i class="fas fa-network-wired vps-feature-icon"></i> Upto 1Gbps network speed🛜</li>
+                            <li><i class="fas fa-map-marker-alt vps-feature-icon"></i> India, Delhi🚩</li>
+                            <li><i class="fas fa-shield-alt vps-feature-icon"></i> BlowNodes DDoS Protection🛡️</li>
+                            <li><i class="fas fa-bolt vps-feature-icon"></i> 17 Tbps Smart MITIGATION🛡️</li>
+                            <li><i class="fas fa-check vps-feature-icon"></i> RDNS Facility Available✅</li>
                         </ul>
-                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-special discord-btn">
+                        <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank" class="btn btn-vps discord-btn">
                             <i class="fab fa-discord"></i> Order on Discord
                         </a>
                     </div>
-                </div>
-
-                <!-- VPS Plan Comparison -->
-                <div class="plan-comparison">
-                    <div class="section-title">
-                        <h2>VPS Plan Comparison</h2>
-                        <p>Compare our VPS hosting plans to find the perfect fit for your needs</p>
-                    </div>
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Mini</th>
-                                <th>Knight</th>
-                                <th>Titan</th>
-                                <th>Guardian</th>
-                                <th>Overlord</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>vCPU Cores</td>
-                                <td>2</td>
-                                <td>4</td>
-                                <td>6</td>
-                                <td>10</td>
-                                <td>20</td>
-                            </tr>
-                            <tr>
-                                <td>RAM</td>
-                                <td>4GB</td>
-                                <td>8GB</td>
-                                <td>16GB</td>
-                                <td>32GB</td>
-                                <td>64GB</td>
-                            </tr>
-                            <tr>
-                                <td>Storage</td>
-                                <td>20GB NVMe</td>
-                                <td>40GB NVMe</td>
-                                <td>60GB NVMe</td>
-                                <td>100GB NVMe</td>
-                                <td>200GB NVMe</td>
-                            </tr>
-                            <tr>
-                                <td>Network Speed</td>
-                                <td>1Gbps</td>
-                                <td>1Gbps</td>
-                                <td>1Gbps</td>
-                                <td>1Gbps</td>
-                                <td>1Gbps</td>
-                            </tr>
-                            <tr>
-                                <td>Location</td>
-                                <td>India, Delhi</td>
-                                <td>India, Delhi</td>
-                                <td>India, Delhi</td>
-                                <td>India, Delhi</td>
-                                <td>India, Delhi</td>
-                            </tr>
-                            <tr>
-                                <td>DDoS Protection</td>
-                                <td>17 Tbps</td>
-                                <td>17 Tbps</td>
-                                <td>17 Tbps</td>
-                                <td>17 Tbps</td>
-                                <td>17 Tbps</td>
-                            </tr>
-                            <tr>
-                                <td>Price (Monthly)</td>
-                                <td>₹259</td>
-                                <td>₹519</td>
-                                <td>₹909</td>
-                                <td>₹1,559</td>
-                                <td>₹2,729</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </section>
@@ -443,16 +1218,209 @@
 
     <!-- Testimonials Page -->
     <section id="testimonials" class="page-section">
-        <!-- Testimonials content -->
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-title">
+                    <h2>What Our Players Say</h2>
+                    <p>Don't just take our word for it. Here's what our community has to say about BlowNodes.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card fade-in">
+                        <p class="testimonial-text">"I've tried several Minecraft hosting providers, but BlowNodes is by far the best. The performance is incredible and their support team is always helpful."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">MJ</div>
+                            <div class="author-info">
+                                <h4>NotchFan42</h4>
+                                <p>Server Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card fade-in">
+                        <p class="testimonial-text">"Setting up my server was so easy with BlowNodes. The control panel is intuitive, and my server has been running smoothly for months without any issues."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">SL</div>
+                            <div class="author-info">
+                                <h4>CreeperHunter</h4>
+                                <p>Content Creator</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card fade-in">
+                        <p class="testimonial-text">"The value for money is exceptional. I get premium features at an affordable price. My players love the low latency and stable connection."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">DR</div>
+                            <div class="author-info">
+                                <h4>RedstoneMaster</h4>
+                                <p>Community Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </section>
 
     <!-- Support Page -->
     <section id="support" class="page-section">
-        <!-- Support content -->
+        <footer>
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>BlowNodes</h3>
+                        <p>Premium Minecraft server hosting with unmatched performance and support.</p>
+                        <div class="social-links">
+                            <a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank"><i class="fab fa-discord"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Services</h3>
+                        <ul class="footer-links">
+                            <li><a href="#" data-page="minecraft">Minecraft Hosting</a></li>
+                            <li><a href="#" data-page="vps">VPS Hosting</a></li>
+                            <li><a href="#">Discord Bot Hosting</a></li>
+                            <li><a href="#">Web Hosting</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Support</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Knowledge Base</a></li>
+                            <li><a href="#">Support Tickets</a></li>
+                            <li><a href="#">Server Status</a></li>
+                            <li><a href="https://discord.com/invite/6Nz9G6pbZR" target="_blank">Discord Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Affiliate Program</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2023 BlowNodes. All rights reserved. Minecraft is a trademark of Mojang AB. Not affiliated with Mojang.</p>
+                </div>
+            </div>
+        </footer>
     </section>
 
     <script>
-        // ... (ALL PREVIOUS JAVASCRIPT REMAINS EXACTLY THE SAME) ...
+        // Page Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize page navigation
+            const pageLinks = document.querySelectorAll('[data-page]');
+            const pageSections = document.querySelectorAll('.page-section');
+            const navButtons = document.querySelectorAll('.page-nav-btn');
+            
+            // Function to show a specific page
+            function showPage(pageId) {
+                // Hide all pages
+                pageSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show the selected page
+                document.getElementById(pageId).classList.add('active');
+                
+                // Update navigation buttons
+                navButtons.forEach(btn => {
+                    if (btn.getAttribute('data-page') === pageId) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Add click event to all page links
+            pageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                });
+            });
+            
+            // Add click event to navigation buttons
+            navButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add hover effects to buttons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Add animation on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = () => {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+            
+            // Check on load
+            fadeInOnScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', fadeInOnScroll);
+            
+            // Add click event to pricing cards
+            const pricingCards = document.querySelectorAll('.pricing-card, .vps-card');
+            pricingCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Remove active class from all cards
+                    pricingCards.forEach(c => c.classList.remove('active'));
+                    // Add active class to clicked card
+                    this.classList.add('active');
+                });
+            });
+            
+            // Set initial page based on URL hash
+            const initialPage = window.location.hash.substring(1) || 'home';
+            showPage(initialPage);
+        });
     </script>
 </body>
 </html>
