@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-yellow: #FFD700;
-            --dark-yellow: #FFC107;
-            --light-yellow: #FFF9C4;
-            --accent-yellow: #FFEB3B;
+            --primary-red: #FF4444;
+            --dark-red: #CC0000;
+            --light-red: #FFAAAA;
+            --accent-red: #FF6B6B;
             --dark-bg: #1A1A1A;
             --darker-bg: #111111;
             --light-bg: #2A2A2A;
@@ -18,7 +18,7 @@
             --text-dark: #333333;
             --minecraft-green: #55FF55;
             --minecraft-dark-green: #00AA00;
-            --special-glow: #FF6B00;
+            --special-glow: #FF3333;
         }
         
         * {
@@ -65,16 +65,16 @@
         }
         
         .logo h1 {
-            color: var(--primary-yellow);
+            color: var(--primary-red);
             font-size: 28px;
             margin-left: 10px;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            text-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
         }
         
         .logo-icon {
-            color: var(--primary-yellow);
+            color: var(--primary-red);
             font-size: 32px;
-            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7));
+            filter: drop-shadow(0 0 5px rgba(255, 68, 68, 0.7));
         }
         
         nav ul {
@@ -96,7 +96,7 @@
         }
         
         nav ul li a:hover {
-            color: var(--primary-yellow);
+            color: var(--primary-red);
         }
         
         nav ul li a::after {
@@ -106,7 +106,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--primary-yellow);
+            background-color: var(--primary-red);
             transition: width 0.3s;
         }
         
@@ -134,17 +134,17 @@
         .btn-login {
             background-color: transparent;
             color: var(--text-light);
-            border: 1px solid var(--primary-yellow);
+            border: 1px solid var(--primary-red);
         }
         
         .btn-register {
-            background-color: var(--primary-yellow);
-            color: var(--text-dark);
+            background-color: var(--primary-red);
+            color: var(--text-light);
         }
         
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 68, 68, 0.3);
         }
         
         /* Hero Section */
@@ -177,8 +177,8 @@
         .hero h2 {
             font-size: 48px;
             margin-bottom: 20px;
-            color: var(--primary-yellow);
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+            color: var(--primary-red);
+            text-shadow: 0 0 15px rgba(255, 68, 68, 0.7);
         }
         
         .hero p {
@@ -189,8 +189,8 @@
         }
         
         .btn-hero {
-            background-color: var(--primary-yellow);
-            color: var(--text-dark);
+            background-color: var(--primary-red);
+            color: var(--text-light);
             padding: 15px 30px;
             font-size: 18px;
             margin: 0 10px;
@@ -216,7 +216,7 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, var(--primary-yellow), var(--accent-yellow), var(--primary-yellow));
+            background: linear-gradient(90deg, var(--primary-red), var(--accent-red), var(--primary-red));
         }
         
         .section-title {
@@ -226,7 +226,7 @@
         
         .section-title h2 {
             font-size: 36px;
-            color: var(--primary-yellow);
+            color: var(--primary-red);
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
@@ -240,7 +240,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background-color: var(--primary-yellow);
+            background-color: var(--primary-red);
         }
         
         .section-title p {
@@ -261,7 +261,7 @@
             padding: 30px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 68, 68, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -273,26 +273,26 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-yellow), var(--accent-yellow));
+            background: linear-gradient(90deg, var(--primary-red), var(--accent-red));
         }
         
         .feature-card:hover {
             transform: translateY(-10px);
-            border-color: var(--primary-yellow);
+            border-color: var(--primary-red);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         
         .feature-icon {
             font-size: 40px;
-            color: var(--primary-yellow);
+            color: var(--primary-red);
             margin-bottom: 20px;
-            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+            filter: drop-shadow(0 0 5px rgba(255, 68, 68, 0.5));
         }
         
         .feature-card h3 {
             font-size: 22px;
             margin-bottom: 15px;
-            color: var(--primary-yellow);
+            color: var(--primary-red);
         }
         
         /* Pricing Section */
@@ -309,7 +309,7 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, var(--primary-yellow), var(--accent-yellow), var(--primary-yellow));
+            background: linear-gradient(90deg, var(--primary-red), var(--accent-red), var(--primary-red));
         }
         
         .pricing-grid {
@@ -335,7 +335,7 @@
         }
         
         .pricing-card.popular {
-            border-color: var(--primary-yellow);
+            border-color: var(--primary-red);
             transform: scale(1.05);
         }
         
@@ -352,8 +352,8 @@
             position: absolute;
             top: 0;
             right: 0;
-            background-color: var(--primary-yellow);
-            color: var(--text-dark);
+            background-color: var(--primary-red);
+            color: var(--text-light);
             padding: 5px 15px;
             font-size: 14px;
             font-weight: bold;
@@ -364,8 +364,8 @@
             position: absolute;
             top: 0;
             right: 0;
-            background: linear-gradient(45deg, var(--special-glow), #FFD700);
-            color: var(--text-dark);
+            background: linear-gradient(45deg, var(--special-glow), #FF4444);
+            color: var(--text-light);
             padding: 5px 15px;
             font-size: 14px;
             font-weight: bold;
@@ -376,7 +376,7 @@
         .pricing-card h3 {
             font-size: 24px;
             margin-bottom: 15px;
-            color: var(--primary-yellow);
+            color: var(--primary-red);
         }
         
         .price {
@@ -393,7 +393,7 @@
         
         .inr-price {
             font-size: 18px;
-            color: var(--light-yellow);
+            color: var(--light-red);
             margin-bottom: 10px;
         }
         
@@ -427,15 +427,15 @@
         
         .btn-pricing {
             width: 100%;
-            background-color: var(--primary-yellow);
-            color: var(--text-dark);
+            background-color: var(--primary-red);
+            color: var(--text-light);
             margin-top: 20px;
         }
         
         .btn-special {
             width: 100%;
-            background: linear-gradient(45deg, var(--special-glow), #FFD700);
-            color: var(--text-dark);
+            background: linear-gradient(45deg, var(--special-glow), #FF4444);
+            color: var(--text-light);
             margin-top: 20px;
             font-weight: bold;
         }
@@ -454,7 +454,7 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, var(--primary-yellow), var(--accent-yellow), var(--primary-yellow));
+            background: linear-gradient(90deg, var(--primary-red), var(--accent-red), var(--primary-red));
         }
         
         .vps-grid {
@@ -477,11 +477,11 @@
         .vps-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-            border-color: var(--primary-yellow);
+            border-color: var(--primary-red);
         }
         
         .vps-card.popular {
-            border-color: var(--primary-yellow);
+            border-color: var(--primary-red);
             transform: scale(1.05);
         }
         
@@ -492,7 +492,7 @@
         .vps-card h3 {
             font-size: 24px;
             margin-bottom: 15px;
-            color: var(--primary-yellow);
+            color: var(--primary-red);
         }
         
         .vps-price {
@@ -509,7 +509,7 @@
         
         .vps-inr-price {
             font-size: 18px;
-            color: var(--light-yellow);
+            color: var(--light-red);
             margin-bottom: 10px;
         }
         
@@ -545,8 +545,8 @@
         
         .btn-vps {
             width: 100%;
-            background-color: var(--primary-yellow);
-            color: var(--text-dark);
+            background-color: var(--primary-red);
+            color: var(--text-light);
             margin-top: 20px;
         }
         
@@ -564,7 +564,7 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, var(--primary-yellow), var(--accent-yellow), var(--primary-yellow));
+            background: linear-gradient(90deg, var(--primary-red), var(--accent-red), var(--primary-red));
         }
         
         .testimonials-grid {
@@ -578,7 +578,7 @@
             border-radius: 10px;
             padding: 30px;
             position: relative;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 68, 68, 0.2);
         }
         
         .testimonial-card::before {
@@ -587,7 +587,7 @@
             top: 10px;
             left: 15px;
             font-size: 60px;
-            color: rgba(255, 215, 0, 0.3);
+            color: rgba(255, 68, 68, 0.3);
             font-family: Georgia, serif;
         }
         
@@ -607,17 +607,17 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-yellow), var(--accent-yellow));
+            background: linear-gradient(135deg, var(--primary-red), var(--accent-red));
             margin-right: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            color: var(--text-dark);
+            color: var(--text-light);
         }
         
         .author-info h4 {
-            color: var(--primary-yellow);
+            color: var(--primary-red);
         }
         
         /* Footer */
@@ -634,7 +634,7 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, var(--primary-yellow), var(--accent-yellow), var(--primary-yellow));
+            background: linear-gradient(90deg, var(--primary-red), var(--accent-red), var(--primary-red));
         }
         
         .footer-grid {
@@ -645,7 +645,7 @@
         }
         
         .footer-column h3 {
-            color: var(--primary-yellow);
+            color: var(--primary-red);
             margin-bottom: 20px;
             font-size: 20px;
         }
@@ -665,7 +665,7 @@
         }
         
         .footer-links a:hover {
-            color: var(--primary-yellow);
+            color: var(--primary-red);
         }
         
         .social-links {
@@ -687,8 +687,8 @@
         }
         
         .social-links a:hover {
-            background-color: var(--primary-yellow);
-            color: var(--text-dark);
+            background-color: var(--primary-red);
+            color: var(--text-light);
             transform: translateY(-3px);
         }
         
@@ -702,15 +702,15 @@
         
         /* Minecraft elements */
         .minecraft-border {
-            border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><rect x="0" y="0" width="12" height="12" fill="%23FFD700" /></svg>') 12 round;
+            border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><rect x="0" y="0" width="12" height="12" fill="%23FF4444" /></svg>') 12 round;
             border-width: 6px;
             border-style: solid;
         }
         
         .pixel-box {
             background-color: var(--dark-bg);
-            border: 4px solid var(--primary-yellow);
-            box-shadow: 4px 4px 0 var(--dark-yellow);
+            border: 4px solid var(--primary-red);
+            box-shadow: 4px 4px 0 var(--dark-red);
         }
         
         /* Page Navigation */
@@ -725,20 +725,20 @@
             padding: 10px 20px;
             background-color: var(--dark-bg);
             color: var(--text-light);
-            border: 1px solid var(--primary-yellow);
+            border: 1px solid var(--primary-red);
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s;
         }
         
         .page-nav-btn.active {
-            background-color: var(--primary-yellow);
-            color: var(--text-dark);
+            background-color: var(--primary-red);
+            color: var(--text-light);
         }
         
         .page-nav-btn:hover {
-            background-color: var(--primary-yellow);
-            color: var(--text-dark);
+            background-color: var(--primary-red);
+            color: var(--text-light);
         }
         
         /* Responsive Design */
@@ -788,8 +788,8 @@
         }
         
         @keyframes glow {
-            0% { box-shadow: 0 0 10px rgba(255, 107, 0, 0.5); }
-            100% { box-shadow: 0 0 20px rgba(255, 107, 0, 0.8), 0 0 30px rgba(255, 107, 0, 0.6); }
+            0% { box-shadow: 0 0 10px rgba(255, 51, 51, 0.5); }
+            100% { box-shadow: 0 0 20px rgba(255, 51, 51, 0.8), 0 0 30px rgba(255, 51, 51, 0.6); }
         }
         
         @keyframes pulse-glow {
@@ -858,8 +858,8 @@
         }
 
         .comparison-table th {
-            background-color: var(--primary-yellow);
-            color: var(--text-dark);
+            background-color: var(--primary-red);
+            color: var(--text-light);
             font-weight: bold;
         }
 
@@ -868,7 +868,7 @@
         }
 
         .comparison-table tr:hover {
-            background-color: rgba(255, 215, 0, 0.1);
+            background-color: rgba(255, 68, 68, 0.1);
         }
 
         /* VPS Feature Icons */
@@ -884,7 +884,7 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <i class="fas fa-bolt logo-icon"></i>
+                <i class="fas fa-fire logo-icon"></i>
                 <h1>BlowNodes</h1>
             </div>
             <nav>
